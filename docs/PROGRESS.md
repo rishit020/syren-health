@@ -118,3 +118,10 @@ The user requested the complete earlier Luvia experience again. The saved app en
 - Submitted one actual, non-intercepted test through the local contact page. Provider returned HTTP 200 / success true and the website displayed the submitted state.
 - Verified the matching Syren Health — website inquiry email arrived in the recipient’s Gmail. Gmail placed the test in Spam; did not silently change spam filters or mailbox rules. User should mark the message Not spam. This proves mailbox delivery, not guaranteed future inbox placement.
 - Evidence: reference/validation/contact-delivery/live-provider.json and live-success.png. Hosting-domain activation/deliverability should be rechecked when deployed.
+
+## Production launch — 2026-10-24
+
+- User approved direct deployment without the PR/Greptile gate and explicitly requested all code on main. Created the private rishit020/syren-health GitHub repository and pushed the initial main commit; there were no existing branches to merge.
+- Created the Vercel syren-health project using the authenticated plugin, deployed main and received READY. Attached syrenhealth.com and www.syrenhealth.com; both verified, with www redirecting to apex. HTTPS returned 200 and the website rendered in the native local browser.
+- Connected Vercel to the GitHub repository for future main deployments. Verified production homepage, contact, unknown-route fallback, FAQ, desktop/mobile, assets, overflow and runtime/resource errors.
+- Activated FormSubmit for the new production origin through the connected inbox. Local production evidence remains under reference/validation/production/.

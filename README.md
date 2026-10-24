@@ -1,6 +1,6 @@
 # Syren Health
 
-A locally runnable Syren Health website built with React and Vite, preserving the Luvia template’s cream/terracotta design, typography and original hero motion.
+The Syren Health website, live at https://syrenhealth.com and locally runnable, built with React and Vite, preserving the Luvia template’s cream/terracotta design, typography and original hero motion.
 
 ## Run
 
@@ -26,7 +26,7 @@ npm run preview -- --port 4173
 
 Navigation and footer links point only to these pages or existing homepage sections. The unused pricing, news, stories, legal and original About routes now resolve to the not-found page; historical template captures remain archived in `public/reference/` for provenance.
 
-The project is local only; it has not been deployed. Static hosting must rewrite application paths to `index.html`. Host-level HTTP 404 status requires hosting configuration.
+The project is deployed to Vercel at https://syrenhealth.com. The www hostname redirects to the apex domain. GitHub main is connected for future deployments. Static hosting must rewrite application paths to `index.html`. Host-level HTTP 404 status requires hosting configuration.
 
 ## Verification
 

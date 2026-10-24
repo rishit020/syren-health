@@ -1,6 +1,6 @@
 # Current boundaries
 
-- This is a local Syren Health website, not a live deployment.
+- The website is live on Vercel at https://syrenhealth.com; www redirects to the apex.
 - Contact submits directly to FormSubmit for delivery to rishit020@gmail.com. Recipient activation is complete. An actual website test was received in Gmail Spam; inbox placement is not guaranteed. The form shows pending, submission acceptance, activation-needed and failure states; errors retain the visitor’s input. A direct email link remains as fallback. There is no newsletter, account or dashboard backend. FormSubmit processes the inquiry data and documents a 30-day retention period.
 - Syren is in development. Device and dashboard photography is illustrative; the approved three photographic feature cards contain baked-in display text. Progress-section diagrams and animations are live HTML/CSS/SVG.
 - The original Luvia hero and page motion are retained. Fine font rendering and video frames vary across browsers. Reduced-motion mode disables or settles movement.
