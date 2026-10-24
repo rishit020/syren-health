@@ -1,0 +1,4 @@
+import fs from'node:fs/promises';import{launch}from'./browser.mjs';
+const browser=await launch();const page=await browser.newPage({viewport:{width:1440,height:900}});const out=process.env.MOTION_OUT||'reference/motion/original';await fs.mkdir(out,{recursive:true});
+await page.goto((process.env.LOCAL_URL||'https://luvia.framer.website')+'/',{waitUntil:'domcontentloaded'});await page.waitForSelector('[data-framer-appear-id="1dbzf36"]');
+const start=Date.now();let rows=[];for(const at of [0,100,300,600,1000,1800,3000]){await page.waitForTimeout(Math.max(0,start+at-Date.now()));const state=await page.locator('[data-framer-appear-id="1dbzf36"]').evaluate(e=>({opacity:getComputedStyle(e).opacity,transform:getComputedStyle(e).transform}));await page.screenshot({path:`${out}/stage-${at}.png`});rows.push({requestedMs:at,elapsedMs:Date.now()-start,...state})}await fs.writeFile(`${out}/timing.json`,JSON.stringify(rows,null,2));console.log(rows);await browser.close();

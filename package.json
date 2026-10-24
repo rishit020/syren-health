@@ -1,0 +1,32 @@
+{
+  "name": "syren-health",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "capture:reference": "node scripts/capture-reference.mjs",
+    "test:visual": "node scripts/validate-visual.mjs",
+    "test:interactions": "node scripts/test-interactions.mjs",
+    "test:ui": "node src/reference/qa-local.mjs",
+    "test:motion": "node scripts/test-responsive-motion.mjs",
+    "test:reveal": "node src/reference/qa-motion.mjs",
+    "test:content": "node scripts/check-scoped-content.mjs",
+    "test:progress": "node scripts/check-progress-section.mjs",
+    "test:site": "node scripts/check-final-site.mjs",
+    "test:contact": "node scripts/check-contact-delivery.mjs"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "vite": "^7.1.0",
+    "playwright": "^1.58.0",
+    "pixelmatch": "^7.1.0",
+    "pngjs": "^7.0.0",
+    "cheerio": "^1.2.0"
+  }
+}

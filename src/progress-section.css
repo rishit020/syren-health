@@ -1,0 +1,656 @@
+#testimonials[data-syren-progress="true"] {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: clamp(88px, 8vw, 116px) 24px clamp(84px, 7vw, 108px) !important;
+  overflow: clip;
+  background: #fcf8ef !important;
+  color: #26211a;
+  scroll-margin-top: 90px;
+}
+
+#testimonials .syren-progress__container {
+  width: min(100%, 1200px);
+  margin: 0 auto;
+}
+
+#testimonials .syren-progress__sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+#testimonials .syren-progress__header {
+  width: min(100%, 780px);
+  margin: 0 auto clamp(42px, 4vw, 54px);
+  text-align: center;
+}
+
+#testimonials .syren-progress__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  margin: 0 0 20px;
+  padding: 7px 17px;
+  border: 1px solid rgba(124, 94, 57, 0.13);
+  border-radius: 999px;
+  background: #f3eddf;
+  color: #4d463d;
+  font: 500 14px/1.2 Inter, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+#testimonials .syren-progress__header h2 {
+  margin: 0;
+  color: #26211a;
+  font: 500 clamp(42px, 5vw, 68px)/0.98 Domine, serif;
+  letter-spacing: -0.045em;
+}
+
+#testimonials .syren-progress__intro {
+  max-width: 680px;
+  margin: 22px auto 0;
+  color: #6d665d;
+  font: 400 clamp(17px, 1.7vw, 20px)/1.48 Inter, sans-serif;
+  letter-spacing: -0.018em;
+}
+
+#testimonials .syren-progress__cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+#testimonials .syren-progress__card {
+  position: relative;
+  display: grid;
+  grid-template-rows: 156px 1fr;
+  min-width: 0;
+  min-height: 414px;
+  padding: 14px;
+  border: 1px solid rgba(116, 83, 48, 0.33);
+  border-radius: 15px;
+  background: rgba(255, 252, 246, 0.58);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.74) inset;
+  transition:
+    transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 220ms ease,
+    box-shadow 260ms ease;
+}
+
+#testimonials .syren-progress__card::after {
+  position: absolute;
+  inset: 7px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  content: "";
+  pointer-events: none;
+  transition: border-color 220ms ease;
+}
+
+#testimonials .syren-progress__visual {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(126, 93, 53, 0.12);
+  border-radius: 11px;
+  background:
+    linear-gradient(rgba(116, 83, 48, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(116, 83, 48, 0.045) 1px, transparent 1px),
+    #f6f0e5;
+  background-size: 22px 22px;
+}
+
+#testimonials .syren-progress__visual-label {
+  position: absolute;
+  top: 12px;
+  left: 13px;
+  z-index: 4;
+  color: rgba(69, 54, 39, 0.62);
+  font: 600 9px/1 Inter, sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+#testimonials .syren-progress__visual--prototype {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(252, 218, 189, 0.18), transparent 42%),
+    linear-gradient(145deg, #a84627, #bf633e 52%, #9f3f22);
+  border-color: rgba(92, 40, 23, 0.25);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -30px 60px rgba(91, 32, 15, 0.12);
+}
+
+#testimonials .syren-progress__visual--prototype .syren-progress__visual-label {
+  color: rgba(255, 249, 240, 0.72);
+}
+
+#testimonials .syren-progress__instrument {
+  position: absolute;
+  inset: 31px 20px 27px;
+  display: grid;
+  grid-template-columns: 78px minmax(30px, 1fr) 78px;
+  align-items: center;
+}
+
+#testimonials .syren-progress__sensor {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  height: 78px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  border: 1px solid rgba(255, 248, 238, 0.74);
+  border-radius: 12px;
+  background: rgba(116, 43, 22, 0.14);
+  box-shadow:
+    0 10px 22px rgba(74, 29, 15, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  color: #fff8ee;
+  backdrop-filter: blur(3px);
+}
+
+#testimonials .syren-progress__sensor > span:last-child {
+  font: 600 9px/1 Inter, sans-serif;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+#testimonials .syren-progress__sensor svg {
+  width: 40px;
+  height: 40px;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.45;
+  stroke-linecap: round;
+}
+
+#testimonials .syren-progress__sensor--radar svg path {
+  stroke-dasharray: 28 8;
+  animation: syren-radar-wave 3.2s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+#testimonials .syren-progress__signal-path {
+  position: relative;
+  height: 1px;
+  background: rgba(255, 247, 236, 0.68);
+}
+
+#testimonials .syren-progress__signal-path::before,
+#testimonials .syren-progress__signal-path::after {
+  position: absolute;
+  top: -2px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #fff8ee;
+  content: "";
+}
+
+#testimonials .syren-progress__signal-path::before { left: -1px; }
+#testimonials .syren-progress__signal-path::after { right: -1px; }
+
+#testimonials .syren-progress__signal-path span {
+  position: absolute;
+  top: -3px;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border: 1px solid rgba(255, 248, 238, 0.9);
+  border-radius: 50%;
+  opacity: 0;
+  animation: syren-signal-travel 3.6s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+#testimonials .syren-progress__signal-path span:nth-child(2) { animation-delay: 1.2s; }
+#testimonials .syren-progress__signal-path span:nth-child(3) { animation-delay: 2.4s; }
+
+#testimonials .syren-progress__thermal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 6px);
+  gap: 3px;
+  margin: 5px 0 7px;
+}
+
+#testimonials .syren-progress__thermal-grid i {
+  width: 6px;
+  height: 6px;
+  border-radius: 2px;
+  background: #fff7ed;
+  box-shadow: 0 0 8px rgba(255, 228, 198, 0.3);
+  animation: syren-thermal-pulse 3.8s ease-in-out infinite;
+  animation-delay: calc(var(--thermal-order, 0) * 120ms);
+  animation-play-state: paused;
+}
+
+#testimonials .syren-progress__thermal-grid i:nth-child(2),
+#testimonials .syren-progress__thermal-grid i:nth-child(5),
+#testimonials .syren-progress__thermal-grid i:nth-child(8) { --thermal-order: 2; }
+#testimonials .syren-progress__thermal-grid i:nth-child(3),
+#testimonials .syren-progress__thermal-grid i:nth-child(6),
+#testimonials .syren-progress__thermal-grid i:nth-child(9) { --thermal-order: 4; }
+
+#testimonials .syren-progress__context-line {
+  position: absolute;
+  right: 14px;
+  bottom: 9px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 249, 241, 0.7);
+  font: 500 9px/1 Inter, sans-serif;
+  letter-spacing: 0.04em;
+}
+
+#testimonials .syren-progress__context-line span {
+  width: 20px;
+  height: 1px;
+  background: currentColor;
+}
+
+#testimonials .syren-progress__visual--priorities {
+  padding: 32px 14px 12px;
+  background:
+    radial-gradient(circle at 100% 0, rgba(179, 87, 50, 0.08), transparent 42%),
+    #f3eddf;
+}
+
+#testimonials .syren-progress__criteria {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(116, 83, 48, 0.16);
+  border-radius: 9px;
+  background: rgba(255, 252, 247, 0.64);
+  box-shadow: 0 8px 20px rgba(78, 55, 32, 0.05);
+}
+
+#testimonials .syren-progress__criteria::before {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 33.333%;
+  background: #b35732;
+  box-shadow: 5px 0 16px rgba(179, 87, 50, 0.18);
+  content: "";
+  animation: syren-focus-row 4.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  animation-play-state: paused;
+}
+
+#testimonials .syren-progress__criterion {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  height: 33.333%;
+  align-items: center;
+  gap: 11px;
+  padding: 0 12px;
+  border-bottom: 1px solid rgba(116, 83, 48, 0.13);
+  color: #443c33;
+  font: 500 12px/1.2 Inter, sans-serif;
+}
+
+#testimonials .syren-progress__criterion:last-child { border-bottom: 0; }
+
+#testimonials .syren-progress__criterion svg {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: #9d4e31;
+  stroke-width: 1.35;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#testimonials .syren-progress__visual--feedback {
+  background:
+    radial-gradient(circle at 80% 80%, rgba(179, 87, 50, 0.12), transparent 45%),
+    linear-gradient(145deg, #f7f2e9, #efe5d6);
+}
+
+#testimonials .syren-progress__question-bubble,
+#testimonials .syren-progress__reply-bubble {
+  position: absolute;
+  border: 1.25px solid #a64e2d;
+  background: rgba(255, 252, 246, 0.94);
+  box-shadow: 0 10px 24px rgba(92, 58, 28, 0.07);
+}
+
+#testimonials .syren-progress__question-bubble {
+  z-index: 2;
+  top: 47px;
+  left: 17px;
+  width: min(68%, 218px);
+  padding: 15px 16px;
+  border-radius: 22px 22px 22px 6px;
+  color: #28221d;
+  font: 500 15px/1.28 Inter, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+#testimonials .syren-progress__question-bubble::after {
+  position: absolute;
+  bottom: -9px;
+  left: 22px;
+  width: 16px;
+  height: 16px;
+  border-bottom: 1.25px solid #a64e2d;
+  border-left: 1.25px solid #a64e2d;
+  background: #fffaf3;
+  content: "";
+  transform: skewY(-34deg) rotate(-19deg);
+}
+
+#testimonials .syren-progress__reply-bubble {
+  z-index: 1;
+  right: 14px;
+  bottom: 25px;
+  display: flex;
+  width: 116px;
+  height: 58px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-color: rgba(179, 87, 50, 0.58);
+  border-radius: 19px 19px 5px 19px;
+  background: #f4ddce;
+}
+
+#testimonials .syren-progress__reply-bubble span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ad542f;
+  animation: syren-reply-dot 2.4s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+#testimonials .syren-progress__reply-bubble span:nth-child(2) { animation-delay: 180ms; }
+#testimonials .syren-progress__reply-bubble span:nth-child(3) { animation-delay: 360ms; }
+
+#testimonials .syren-progress__card-copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: 22px 10px 7px;
+}
+
+#testimonials .syren-progress__index {
+  margin: 0 0 11px;
+  color: #60584f;
+  font: 600 10px/1 Inter, sans-serif;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+#testimonials .syren-progress__card h3 {
+  margin: 0;
+  color: #26211a;
+  font: 500 clamp(21px, 2vw, 25px)/1.12 Domine, serif;
+  letter-spacing: -0.035em;
+}
+
+#testimonials .syren-progress__card-copy > p:not(.syren-progress__index) {
+  margin: 12px 0 18px;
+  color: #6d665d;
+  font: 400 14px/1.48 Inter, sans-serif;
+  letter-spacing: -0.012em;
+}
+
+#testimonials .syren-progress__status,
+#testimonials .syren-progress__card-link {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 36px;
+  align-items: center;
+  margin-top: auto;
+  padding: 8px 13px;
+  border: 1px solid rgba(124, 85, 47, 0.36);
+  border-radius: 9px;
+  color: #51483f;
+  background: rgba(255, 252, 247, 0.52);
+  font: 500 12px/1.2 Inter, sans-serif;
+  text-decoration: none;
+}
+
+#testimonials .syren-progress__status {
+  min-height: 30px;
+  gap: 7px;
+  padding: 6px 10px;
+  border: 0;
+  border-radius: 999px;
+  background: #f3eddf;
+  color: #5e544a;
+  font-size: 11px;
+}
+
+#testimonials .syren-progress__status::before {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #b35732;
+  content: "";
+}
+
+#testimonials .syren-progress__card-link {
+  width: 100%;
+  justify-content: space-between;
+  transition: color 180ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+
+#testimonials .syren-progress__card-link svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.45;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+#testimonials .syren-progress__banner {
+  display: flex;
+  min-height: 92px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  margin-top: 24px;
+  padding: 18px 22px;
+  border: 1px solid rgba(116, 83, 48, 0.29);
+  border-radius: 14px;
+  background:
+    radial-gradient(circle at 0 50%, rgba(179, 87, 50, 0.07), transparent 30%),
+    #f3eddf;
+}
+
+#testimonials .syren-progress__banner-message {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 18px;
+}
+
+#testimonials .syren-progress__banner-message svg {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: #b35732;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#testimonials .syren-progress__banner-message p {
+  margin: 0;
+  color: #302920;
+  font: 500 clamp(16px, 1.6vw, 18px)/1.35 Inter, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+#testimonials .syren-progress__banner > a {
+  display: inline-flex;
+  min-width: 126px;
+  min-height: 44px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: #b35732;
+  box-shadow: 0 8px 20px rgba(143, 62, 30, 0.17);
+  color: #fffaf2;
+  font: 600 14px/1 Inter, sans-serif;
+  text-decoration: none;
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), background-color 180ms ease;
+}
+
+#testimonials[data-progress-motion="ready"] .syren-progress__reveal {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+#testimonials[data-progress-motion="ready"].is-visible .syren-progress__reveal {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1) var(--progress-delay, 0ms),
+    transform 820ms cubic-bezier(0.22, 1, 0.36, 1) var(--progress-delay, 0ms);
+}
+
+#testimonials.is-active .syren-progress__sensor--radar svg path,
+#testimonials.is-active .syren-progress__signal-path span,
+#testimonials.is-active .syren-progress__thermal-grid i,
+#testimonials.is-active .syren-progress__criteria::before,
+#testimonials.is-active .syren-progress__reply-bubble span {
+  animation-play-state: running;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #testimonials .syren-progress__card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(159, 75, 42, 0.54);
+    box-shadow: 0 14px 32px rgba(73, 48, 27, 0.08);
+  }
+
+  #testimonials .syren-progress__card:hover::after { border-color: rgba(179, 87, 50, 0.1); }
+  #testimonials .syren-progress__card-link:hover { color: #9f4527; border-color: rgba(179, 87, 50, 0.62); background: #fffaf2; }
+  #testimonials .syren-progress__card-link:hover svg { transform: translateX(3px); }
+  #testimonials .syren-progress__banner > a:hover { transform: translateY(-2px); background: #9e492c; }
+}
+
+#testimonials a:focus-visible {
+  outline: 3px solid rgba(179, 87, 50, 0.42);
+  outline-offset: 3px;
+}
+
+@media (max-width: 1000px) {
+  #testimonials .syren-progress__cards { gap: 12px; }
+  #testimonials .syren-progress__card { grid-template-rows: 150px 1fr; min-height: 410px; padding: 11px; }
+  #testimonials .syren-progress__instrument { inset-inline: 12px; grid-template-columns: 68px minmax(24px, 1fr) 68px; }
+  #testimonials .syren-progress__sensor { height: 70px; }
+  #testimonials .syren-progress__card-copy { padding-inline: 8px; }
+}
+
+@media (max-width: 809px) {
+  #testimonials[data-syren-progress="true"] { padding: 78px 20px 84px !important; }
+  #testimonials .syren-progress__header { margin-bottom: 38px; }
+  #testimonials .syren-progress__header h2 { font-size: clamp(38px, 7vw, 52px); }
+  #testimonials .syren-progress__cards { grid-template-columns: 1fr; gap: 18px; }
+  #testimonials .syren-progress__card { grid-template-columns: minmax(230px, 0.9fr) minmax(0, 1.1fr); grid-template-rows: 1fr; min-height: 330px; padding: 14px; }
+  #testimonials .syren-progress__visual { min-height: 300px; }
+  #testimonials .syren-progress__card-copy { padding: 24px 16px 8px 24px; }
+  #testimonials .syren-progress__banner { margin-top: 20px; }
+}
+
+@media (max-width: 560px) {
+  #testimonials[data-syren-progress="true"] { padding: 70px 16px 76px !important; }
+  #testimonials .syren-progress__header { margin-bottom: 32px; }
+  #testimonials .syren-progress__eyebrow { margin-bottom: 17px; }
+  #testimonials .syren-progress__header h2 { font-size: clamp(36px, 11vw, 48px); }
+  #testimonials .syren-progress__intro { margin-top: 18px; font-size: 16px; }
+  #testimonials .syren-progress__card { grid-template-columns: 1fr; grid-template-rows: 158px auto; min-height: 0; padding: 12px; }
+  #testimonials .syren-progress__visual { min-height: 0; }
+  #testimonials .syren-progress__instrument { inset: 31px 18px 27px; grid-template-columns: 78px minmax(30px, 1fr) 78px; }
+  #testimonials .syren-progress__sensor { height: 78px; }
+  #testimonials .syren-progress__card-copy { padding: 21px 8px 5px; }
+  #testimonials .syren-progress__card h3 { font-size: 24px; }
+  #testimonials .syren-progress__card-copy > p:not(.syren-progress__index) { font-size: 14px; }
+  #testimonials .syren-progress__status,
+  #testimonials .syren-progress__card-link { margin-top: 24px; }
+  #testimonials .syren-progress__banner { align-items: flex-start; flex-direction: column; gap: 17px; padding: 20px; }
+  #testimonials .syren-progress__banner-message { align-items: flex-start; gap: 13px; }
+  #testimonials .syren-progress__banner-message svg { width: 30px; height: 30px; }
+  #testimonials .syren-progress__banner > a { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #testimonials .syren-progress__reveal,
+  #testimonials .syren-progress__card,
+  #testimonials .syren-progress__card::after,
+  #testimonials .syren-progress__card-link,
+  #testimonials .syren-progress__card-link svg,
+  #testimonials .syren-progress__banner > a {
+    opacity: 1 !important;
+    transform: none !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  #testimonials .syren-progress__sensor--radar svg path,
+  #testimonials .syren-progress__signal-path span,
+  #testimonials .syren-progress__thermal-grid i,
+  #testimonials .syren-progress__criteria::before,
+  #testimonials .syren-progress__reply-bubble span {
+    animation: none !important;
+  }
+
+  #testimonials .syren-progress__signal-path span { opacity: 0; }
+}
+
+@keyframes syren-radar-wave {
+  0%, 100% { opacity: 0.5; stroke-dashoffset: 10; }
+  45% { opacity: 1; stroke-dashoffset: 0; }
+}
+
+@keyframes syren-signal-travel {
+  0% { left: 0; opacity: 0; transform: scale(0.65); }
+  16% { opacity: 0.9; }
+  62% { opacity: 0.55; }
+  78%, 100% { left: calc(100% - 7px); opacity: 0; transform: scale(1.2); }
+}
+
+@keyframes syren-thermal-pulse {
+  0%, 100% { opacity: 0.48; transform: scale(0.92); }
+  45% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes syren-focus-row {
+  0%, 25% { transform: translateY(0); }
+  38%, 59% { transform: translateY(100%); }
+  72%, 93% { transform: translateY(200%); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes syren-reply-dot {
+  0%, 55%, 100% { opacity: 0.38; transform: translateY(0); }
+  18% { opacity: 1; transform: translateY(-3px); }
+  32% { opacity: 0.65; transform: translateY(0); }
+}

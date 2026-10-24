@@ -1,0 +1,23 @@
+{
+  "status": "supplied-concept-renders",
+  "heroArtwork": {
+    "src": "/assets/7fb2ddfe0ad9a1.webm",
+    "poster": "/syren/hero-artwork-poster.webp",
+    "note": "Original animated template artwork, retained at founder request."
+  },
+  "detail": {
+    "src": "/syren/device-detail.webp",
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/syren/device-detail-640.webp 640w, /syren/device-detail-960.webp 960w, /syren/device-detail.webp 1536w",
+    "alt": "Concept render of the silver Syren Health enclosure, showing its branded front, recessed sensor housing and cable in a three-quarter view."
+  },
+  "alternate": {
+    "src": "/syren/device-alternate.webp",
+    "width": 1536,
+    "height": 768,
+    "srcSet": "/syren/device-alternate-640.webp 640w, /syren/device-alternate-960.webp 960w, /syren/device-alternate.webp 1536w",
+    "alt": "Concept render of the Syren Health enclosure from a lower side angle, showing its branded front, housing depth and cable."
+  },
+  "note": "Only the supplied front three-quarter and wider side views are used publicly. Rear and internal views are archived for reference. Sensor specifications are not inferred from appearance."
+}

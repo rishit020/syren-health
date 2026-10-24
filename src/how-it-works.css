@@ -1,0 +1,100 @@
+#how-it-works {
+  scroll-margin-top: 96px;
+}
+
+#how-it-works [data-syren-how-card="true"] {
+  background: transparent !important;
+  border-radius: 18px;
+  box-shadow:
+    0 0 0 1px rgba(100, 75, 51, 0.28),
+    0 5px 16px rgba(59, 39, 22, 0.07);
+  transition:
+    transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 260ms ease;
+}
+
+/* Draw the edge above the artwork so light corners stay defined even when
+   an original Framer wrapper clips the card's outside shadow. */
+#how-it-works [data-syren-how-card="true"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  border: 1px solid rgba(100, 75, 51, 0.32);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+#how-it-works [data-syren-how-card="true"] .framer-1qair6z {
+  background: transparent;
+}
+
+#how-it-works [data-syren-how-card="true"] .framer-gbi6wq {
+  display: none;
+}
+
+#how-it-works [data-syren-how-card="true"] .framer-1qair6z::before,
+#how-it-works [data-syren-how-card="true"] .framer-1qair6z::after,
+#how-it-works [data-syren-how-card="true"] .framer-1yxk61a-container > div::before,
+#how-it-works [data-syren-how-card="true"] .framer-1yxk61a-container > div::after {
+  content: none !important;
+  animation: none !important;
+}
+
+#how-it-works [data-syren-how-card="true"] .framer-1yxk61a-container {
+  width: 100%;
+  height: auto !important;
+  aspect-ratio: 3 / 4;
+}
+
+#how-it-works [data-syren-how-card="true"] .framer-1yxk61a-container > div {
+  width: 100%;
+  height: 100% !important;
+}
+
+#how-it-works [data-syren-how-card="true"] img[data-syren-how-image] {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain !important;
+  object-position: center;
+}
+
+/* The approved artwork already contains its typography and arrow. Keep the
+   caption DOM available to assistive technology without drawing duplicates. */
+#how-it-works [data-syren-how-card="true"] .framer-p5qlki {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+#how-it-works [data-syren-how-card="true"]:focus-visible {
+  outline: 3px solid var(--token-2e78439c-8155-4769-a951-42f0b9a87859, #b05a36);
+  outline-offset: 4px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #how-it-works [data-syren-how-card="true"]:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      0 0 0 1px rgba(100, 75, 51, 0.38),
+      0 16px 34px rgba(38, 33, 26, 0.14);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #how-it-works [data-syren-how-card="true"] {
+    transition: none;
+  }
+
+  #how-it-works [data-syren-how-card="true"]:hover {
+    transform: none;
+  }
+}

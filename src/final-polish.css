@@ -1,0 +1,11 @@
+/* Keep the retained source notice clear of Framer's fixed attribution badge. */
+@media (min-width: 810px) {
+  footer[data-syren-footer] [data-framer-name="Author"] {
+    margin-right: 150px;
+  }
+}
+
+footer[data-syren-footer] a:focus-visible {
+  outline: 2px solid #b05a36;
+  outline-offset: 4px;
+}

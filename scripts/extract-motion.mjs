@@ -1,0 +1,3 @@
+import fs from'node:fs/promises';import{load}from'cheerio';
+const files=await fs.readdir('reference/source');let motion={};for(const f of files){if(!f.endsWith('.html'))continue;const $=load(await fs.readFile('reference/source/'+f,'utf8'));const scripts=$('script').toArray().map(e=>({type:$(e).attr('type'),id:$(e).attr('id'),text:$(e).text()}));const entries=scripts.filter(s=>s.text.startsWith('{')&&s.text.includes('"initial"')&&s.text.includes('"animate"')).map(s=>{try{return JSON.parse(s.text)}catch{return null}}).filter(Boolean);motion[f.slice(0,-5)]=entries;}
+await fs.writeFile('reference/motion-config.json',JSON.stringify(motion,null,2));console.log('Motion data',Object.entries(motion).map(([k,v])=>[k,v.flatMap(o=>Object.keys(o))]));
