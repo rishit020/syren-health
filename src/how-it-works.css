@@ -60,6 +60,11 @@
   object-position: center;
 }
 
+#how-it-works [data-syren-how-card="true"] img[data-syren-how-image="clinic-overview-card"] {
+  object-fit: cover !important;
+  object-position: top left;
+}
+
 /* The approved artwork already contains its typography and arrow. Keep the
    caption DOM available to assistive technology without drawing duplicates. */
 #how-it-works [data-syren-how-card="true"] .framer-p5qlki {

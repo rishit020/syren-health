@@ -20,7 +20,7 @@ try {
   const unchanged=[];
   assert.match(await p.locator('#faq').innerText(),/What is Syren Health building/);
   assert.match(await p.locator('footer').innerText(),/Syren Health/);
-  const hero=p.locator('section[data-syren-home]');const text=await hero.innerText();for(const title of['Contactless sensing','No wearable needed','Caregiver awareness'])assert.ok(text.includes(title));assert.doesNotMatch(text,/500 Members|15 Years|98%|biomarker|longevity/i);
+  const hero=p.locator('section[data-syren-home]');const text=await hero.innerText();for(const title of['Contactless sensing','Radar · thermal · Wi-Fi CSI','Caregiver awareness'])assert.ok(text.includes(title));assert.doesNotMatch(text,/500 Members|15 Years|98%|biomarker|longevity/i);
   assert.equal(await hero.locator('[data-framer-name="Hero stats"] svg[data-syren-icon]:visible').count(),3);
   const video=hero.locator('video');assert.equal(await video.getAttribute('src'),'/assets/7fb2ddfe0ad9a1.webm');assert.equal(await video.evaluate(v=>v.playbackRate),1);
   if(size.width>=810){const cta=p.locator('nav:visible [data-syren-cta]');await cta.hover();await p.waitForTimeout(180);assert.equal((await cta.innerText()).replace(/\s/g,''),'GetinTouchGetinTouch');await p.mouse.move(1,1);}

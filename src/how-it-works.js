@@ -13,8 +13,8 @@ const steps = [
   {
     number: "2",
     label: "Contactless sensing",
-    title: "Radar meets thermal.",
-    description: "Exploring movement and room activity.",
+    title: "Radar, thermal and Wi-Fi CSI.",
+    description: "Three sensing streams on the bench.",
     href: "/#features",
     image: "card-sensing-approved",
     alt: "Syren device concept with separate radar and thermal illustrations.",
@@ -22,11 +22,11 @@ const steps = [
   {
     number: "3",
     label: "Caregiver review",
-    title: "Context for the care team.",
-    description: "An overview built around caregiver review.",
-    href: "/contact",
-    image: "card-caregiver-approved",
-    alt: "Caregiver dashboard concept with fictional sample data shown on a tablet in a warm room.",
+    title: "An actual dashboard UI.",
+    description: "Current clinic interface with synthetic records.",
+    href: "/#engineering",
+    image: "clinic-overview-card",
+    alt: "Screenshot of the actual Syren clinic overview UI showing a demo environment, synthetic resident records, an attention queue and monitoring coverage.",
   },
 ];
 
@@ -40,8 +40,9 @@ function replaceCardMedia(root, card, step) {
 
   const image = root.createElement("img");
   image.dataset.syrenHowImage = step.image;
-  image.setAttribute("src", `/syren/${step.image}.webp`);
-  image.setAttribute(
+  const screenshot = step.image === "clinic-overview-card";
+  image.setAttribute("src", `/syren/${step.image}.${screenshot ? "png" : "webp"}`);
+  if (!screenshot) image.setAttribute(
     "srcset",
     `/syren/${step.image}-640.webp 640w, /syren/${step.image}-960.webp 960w, /syren/${step.image}.webp 1086w`,
   );
@@ -49,14 +50,14 @@ function replaceCardMedia(root, card, step) {
     "sizes",
     "(min-width: 1200px) 387px, (min-width: 810px) calc((100vw - 80px) / 3), calc(100vw - 32px)",
   );
-  image.setAttribute("width", "1086");
-  image.setAttribute("height", "1448");
+  image.setAttribute("width", screenshot ? "900" : "1086");
+  image.setAttribute("height", screenshot ? "1200" : "1448");
   image.setAttribute("alt", step.alt);
   image.setAttribute("decoding", "async");
   image.setAttribute("loading", "lazy");
   image.setAttribute(
     "style",
-    "display:block;width:100%;height:100%;object-fit:contain;object-position:center;border-radius:0",
+    `display:block;width:100%;height:100%;object-fit:${screenshot ? "cover" : "contain"};object-position:${screenshot ? "top left" : "center"};border-radius:0`,
   );
   current.replaceWith(image);
 }

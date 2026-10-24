@@ -138,7 +138,7 @@
   position: absolute;
   inset: 31px 20px 27px;
   display: grid;
-  grid-template-columns: 78px minmax(30px, 1fr) 78px;
+  grid-template-columns: 68px minmax(12px, 1fr) 68px minmax(12px, 1fr) 68px;
   align-items: center;
 }
 
@@ -565,7 +565,7 @@
 @media (max-width: 1000px) {
   #testimonials .syren-progress__cards { gap: 12px; }
   #testimonials .syren-progress__card { grid-template-rows: 150px 1fr; min-height: 410px; padding: 11px; }
-  #testimonials .syren-progress__instrument { inset-inline: 12px; grid-template-columns: 68px minmax(24px, 1fr) 68px; }
+  #testimonials .syren-progress__instrument { inset-inline: 12px; grid-template-columns: 60px minmax(10px, 1fr) 60px minmax(10px, 1fr) 60px; }
   #testimonials .syren-progress__sensor { height: 70px; }
   #testimonials .syren-progress__card-copy { padding-inline: 8px; }
 }
@@ -589,7 +589,7 @@
   #testimonials .syren-progress__intro { margin-top: 18px; font-size: 16px; }
   #testimonials .syren-progress__card { grid-template-columns: 1fr; grid-template-rows: 158px auto; min-height: 0; padding: 12px; }
   #testimonials .syren-progress__visual { min-height: 0; }
-  #testimonials .syren-progress__instrument { inset: 31px 18px 27px; grid-template-columns: 78px minmax(30px, 1fr) 78px; }
+  #testimonials .syren-progress__instrument { inset: 31px 18px 27px; grid-template-columns: 68px minmax(12px, 1fr) 68px minmax(12px, 1fr) 68px; }
   #testimonials .syren-progress__sensor { height: 78px; }
   #testimonials .syren-progress__card-copy { padding: 21px 8px 5px; }
   #testimonials .syren-progress__card h3 { font-size: 24px; }

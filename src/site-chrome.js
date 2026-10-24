@@ -19,7 +19,7 @@ export const faqContent = [
     source: "How long does it take to receive my health results?",
     question: "What kinds of sensing is Syren exploring?",
     answer:
-      "Syren is exploring radar and thermal sensing to understand patterns such as presence and movement. The final sensor setup and performance are still being validated.",
+      "The bench prototype combines a 60 GHz radar, a 32 × 24 thermal array and ESP32-S3 Wi-Fi CSI with a separate transmit node. It explores presence and movement; physiological accuracy and clinical use have not been validated. A coordinated multi-room mesh is planned, not deployed.",
   },
   {
     source: "Can I share my reports with my primary care physician?",

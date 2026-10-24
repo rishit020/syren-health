@@ -1,6 +1,7 @@
 import { applyHowItWorks } from "./how-it-works.js";
 import { applyProgressSection } from "./progress-section.js";
 import { applySiteChrome } from "./site-chrome.js";
+import { applyTechnicalProof } from "./technical-proof.js";
 
 // Content-only adaptation. Keep the captured component tree, CSS and motion.
 export const homeTitle = "Syren Health | Contactless Overnight Awareness";
@@ -10,7 +11,7 @@ const heroCopy = new Map([
   ["Stop managing symptoms and start engineering your vitality. Luvia integrates deep biomarker analysis with real-time AI insights.", "Syren Health is developing contactless room monitoring to help care teams notice overnight activity that may need a closer look."],
   ["+500 Members", "Contactless sensing"],
   ["Helping high-performers", "Room-based monitoring"],
-  ["+15 Years of longevity", "No wearable needed"],
+  ["+15 Years of longevity", "Radar · thermal · Wi-Fi CSI"],
   ["Focused on extending healthspan", "Designed for resident comfort"],
   ["98% Sleep improvement", "Caregiver awareness"],
   ["Proven results in recovery", "In development for senior care"],
@@ -18,15 +19,15 @@ const heroCopy = new Map([
 
 const featureCopy = new Map([
   ["Driving measurable health results.", "Built for overnight awareness."],
-  ["Our platform tracks your unique biological data to help you understand what’s happening inside your body.", "The Syren prototype explores contactless monitoring to help care teams recognize moments that deserve a closer look."],
-  ["Biological Optimization", "Contactless Sensing"],
-  ["Precision tools designed to optimize your internal health metrics.", "Exploring room activity without a resident wearable or alert button."],
+  ["Our platform tracks your unique biological data to help you understand what’s happening inside your body.", "Our bench prototype brings 60 GHz radar, a 32 × 24 thermal array and Wi-Fi CSI into one room-level engineering view."],
+  ["Biological Optimization", "Three sensing modalities"],
+  ["Precision tools designed to optimize your internal health metrics.", "Radar, thermal and a separated Wi-Fi transmitter/receiver pair explore motion and presence without a wearable."],
   ["Real-Time Wellness", "Overnight Awareness"],
   ["Monitor your vitals with instant alerts and expert support.", "Designed around the moments between routine caregiver check-ins."],
-  ["Evidence-Based Living", "Human Oversight"],
-  ["Make better decisions using data-driven, scientific insights.", "Building toward useful prompts for a caregiver to assess and act."],
-  ["Longevity Generation", "Resident Dignity"],
-  ["Build personalized systems that evolve with your biological needs.", "Developing with resident comfort, privacy and dignity in mind."],
+  ["Evidence-Based Living", "Quality-aware output"],
+  ["Make better decisions using data-driven, scientific insights.", "The prototype withholds stale or unsupported readings instead of filling gaps with invented values."],
+  ["Longevity Generation", "Planned room mesh"],
+  ["Build personalized systems that evolve with your biological needs.", "We are designing coordinated nodes across rooms; multi-room sensing and resident attribution still need validation."],
 ]);
 
 const impactCopy = new Map([
@@ -43,8 +44,8 @@ const impactCopy = new Map([
   ["Individual biomarkers tracked to provide a full picture of your health.", "Exploring contactless sensing of movement and presence in the room."],
   ["12k+", "Thermal"],
   ["Personalized health protocols generated for our global members.", "Using a thermal array to explore patterns in room activity."],
-  ["98%", "Night"],
-  ["Average improvement in sleep quality and nightly recovery scores.", "Developing awareness for the hours between routine caregiver check-ins."],
+  ["98%", "Wi-Fi CSI"],
+  ["Average improvement in sleep quality and nightly recovery scores.", "Sampling channel changes between a separate transmit node and the ESP32-S3 receiver on the bench."],
   ["24/7", "Care"],
   ["Continuous monitoring to catch health changes before they happen.", "Keeping assessment and response in the hands of the care team."],
 ]);
@@ -128,6 +129,7 @@ export function applyScopedHomeContent(root) {
   }
 
   applyHowItWorks(root);
+  applyTechnicalProof(root);
   applyProgressSection(root);
   const approach = root.querySelector('section[data-framer-name="About Section"]');
   if (approach) {
