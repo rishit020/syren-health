@@ -12,8 +12,8 @@ Use the existing cream/terracotta system, Domine headings, Inter body text, clea
 
 - Tag: Our progress.
 - Heading: Where we are today.
-- Introduction: Syren is in development. We’re shaping the prototype and the questions it needs to answer.
-- Card 1: The prototype. A room-based concept bringing radar and thermal sensing together. Status: In development. Small radar/thermal input schematic in a terracotta panel.
+- Introduction: A sensing bench and clinic interface exist today. Multi-room coordination and clinical performance remain open engineering work.
+- Card 1: The sensing prototype. Radar, thermal and Wi-Fi CSI are captured in one local engineering setup. Status: Bench-tested. The terracotta schematic shows three sensing inputs; it does not depict a deployed room mesh.
 - Card 2: What we’re validating. Testing needs to show when the system is useful, and when it gets things wrong. Status: Validation priorities. Unchecked Reliability / False alerts / Caregiver usefulness list; never animate checkmarks or suggest passed tests.
 - Card 3: Care-team feedback. Conversations with care teams can help guide what we build next. Link: Share your perspective. Small question/reply illustration reading What would help your team? No avatars, attributed quotes or AI people.
 - Banner: Work in senior care? Help us build around your team’s needs. Button: Talk to Us.
