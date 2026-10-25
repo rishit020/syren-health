@@ -20,17 +20,21 @@ try {
   const unchanged=[];
   assert.match(await p.locator('#faq').innerText(),/What is Syren Health building/);
   assert.match(await p.locator('footer').innerText(),/Syren Health/);
-  const hero=p.locator('section[data-syren-home]');const text=await hero.innerText();for(const title of['Contactless sensing','No wearable needed','Caregiver awareness'])assert.ok(text.includes(title));assert.doesNotMatch(text,/500 Members|15 Years|98%|biomarker|longevity/i);
+  const hero=p.locator('section[data-syren-home]');const text=await hero.innerText();for(const title of['Contactless sensing','Radar · thermal · Wi-Fi CSI','Caregiver awareness'])assert.ok(text.includes(title));assert.doesNotMatch(text,/500 Members|15 Years|98%|biomarker|longevity/i);
   assert.equal(await hero.locator('[data-framer-name="Hero stats"] svg[data-syren-icon]:visible').count(),3);
   const video=hero.locator('video');assert.equal(await video.getAttribute('src'),'/assets/7fb2ddfe0ad9a1.webm');assert.equal(await video.evaluate(v=>v.playbackRate),1);
   if(size.width>=810){const cta=p.locator('nav:visible [data-syren-cta]');await cta.hover();await p.waitForTimeout(180);assert.equal((await cta.innerText()).replace(/\s/g,''),'GetinTouchGetinTouch');await p.mouse.move(1,1);}
   await freezeMedia(p);if(['desktop','mobile','comment'].includes(name))await p.screenshot({path:`${out}/${name}-hero.png`});
   await p.locator('#features').scrollIntoViewIfNeeded();await settle(p,2300);
   assert.match(await p.locator('#features').innerText(),/Built for overnight awareness/);
-  const image=p.locator('#features [data-framer-name="Center image"] img');await image.waitFor();assert.ok(await image.evaluate(i=>i.complete&&i.naturalWidth>0));assert.match(await image.getAttribute('src'),/device-warm-v1.webp/);assert.equal(await image.evaluate(i=>getComputedStyle(i).objectFit),'cover');
-  assert.equal((await image.boundingBox()).height,460);
+  const visual=p.locator('#features [data-syren-bench-visual="true"]');await visual.waitFor();
+  assert.equal(await visual.locator('img').count(),0);
+  assert.match(await visual.innerText(),/Current prototype/);
+  assert.match(await visual.innerText(),/ESP32-C6[\s\S]*Wi-Fi CSI[\s\S]*ESP32-S3/);
+  assert.match(await visual.innerText(),/60 GHz radar[\s\S]*32 × 24 thermal/);
+  assert.equal((await visual.boundingBox()).height,460);
   if(['desktop','mobile','comment'].includes(name))await p.screenshot({path:`${out}/${name}-features.png`});
-  checks.push({name,width:size.width,heading:actual,unchangedSections:unchanged});console.log('PASS',name,'original heading size, image frame, lower sections and animation asset preserved');
+  checks.push({name,width:size.width,heading:actual,unchangedSections:unchanged});console.log('PASS',name,'original heading size, bench frame, lower sections and animation asset preserved');
  }
  await p.setViewportSize({width:390,height:844});await p.goto(base);await p.waitForSelector('h1');await settle(p,1200);await p.getByRole('button',{name:'Open menu',exact:true}).click();await p.getByRole('button',{name:'Close menu',exact:true}).waitFor();await p.waitForTimeout(500);const device=p.locator('nav:visible a[data-syren-nav-link][href="/#device"]');assert.ok(await device.isVisible());await device.click();await p.waitForTimeout(600);assert.equal(new URL(p.url()).hash,'#device');assert.ok(await p.getByRole('button',{name:'Open menu',exact:true}).isVisible());assert.match(await p.locator('nav:visible').innerText(),/Syren Health/);console.log('PASS mobile menu keeps new content and closes on section navigation');
  assert.deepEqual(errors,[]);assert.deepEqual(resources,[]);await fs.writeFile(`${out}/report.json`,JSON.stringify({checks,menuAndAnchors:true,errors,resources,preservedAppAndStyles:true},null,2));

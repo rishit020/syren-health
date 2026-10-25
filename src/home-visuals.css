@@ -1,0 +1,194 @@
+/* Homepage proof visuals share the existing cream/terracotta palette. */
+#features [data-syren-bench-visual="true"] {
+  overflow: hidden;
+  background: #35271f !important;
+}
+
+#features .syren-feature-bench {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  flex-direction: column;
+  overflow: hidden;
+  padding: clamp(19px, 2vw, 27px);
+  border: 1px solid rgba(255, 238, 217, 0.15);
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 94% 48%, rgba(203, 103, 54, 0.22), transparent 43%),
+    linear-gradient(rgba(255, 245, 229, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 245, 229, 0.04) 1px, transparent 1px),
+    #35271f;
+  background-size: auto, 24px 24px, 24px 24px, auto;
+  color: #fff9ef;
+}
+
+#features .syren-feature-bench__top,
+#features .syren-feature-bench__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font: 600 10px/1.25 Inter, sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+#features .syren-feature-bench__top strong {
+  flex: 0 0 auto;
+  padding: 6px 8px;
+  border: 1px solid rgba(255, 249, 239, 0.28);
+  border-radius: 999px;
+  font: 500 9px/1 Inter, sans-serif;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+#features .syren-feature-bench h3 {
+  margin: 24px 0 0;
+  font: 400 clamp(33px, 3vw, 43px)/1.04 Domine, Georgia, serif;
+  letter-spacing: -0.055em;
+}
+
+#features .syren-feature-bench > p {
+  margin: 9px 0 0;
+  color: #e8c9b3;
+  font: 400 13px/1.35 Inter, sans-serif;
+}
+
+#features .syren-feature-bench__wireless {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(55px, 0.76fr) minmax(0, 1fr);
+  align-items: center;
+  margin-top: auto;
+}
+
+#features .syren-feature-bench__wireless > div {
+  display: flex;
+  min-height: 85px;
+  flex-direction: column;
+  justify-content: center;
+  padding: 11px;
+  border: 1px solid rgba(255, 246, 234, 0.38);
+  border-radius: 10px;
+  background: rgba(255, 248, 237, 0.07);
+}
+
+#features .syren-feature-bench__wireless > div:last-child {
+  border-color: #d0754e;
+  background: #ad4e2e;
+}
+
+#features .syren-feature-bench__wireless small {
+  color: #e9c9b6;
+  font: 500 10px/1.2 Inter, sans-serif;
+}
+
+#features .syren-feature-bench__wireless b {
+  margin-top: 5px;
+  font: 700 16px/1.2 Inter, sans-serif;
+  letter-spacing: -0.025em;
+}
+
+#features .syren-feature-bench__wireless > span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  color: #e8c9b3;
+  font: 500 10px/1 Inter, sans-serif;
+  white-space: nowrap;
+}
+
+#features .syren-feature-bench__wireless i {
+  display: block;
+  width: 100%;
+  border-top: 1px dashed currentColor;
+}
+
+#features .syren-feature-bench__wireless i:first-child {
+  display: none;
+}
+
+#features .syren-feature-bench__inputs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 16px 0;
+}
+
+#features .syren-feature-bench__inputs span {
+  padding: 6px 7px;
+  border: 1px solid rgba(255, 248, 238, 0.22);
+  border-radius: 999px;
+  background: rgba(255, 248, 238, 0.06);
+  font: 500 10px/1 Inter, sans-serif;
+  white-space: nowrap;
+}
+
+#features .syren-feature-bench__footer {
+  min-height: 39px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 248, 238, 0.22);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+#features .syren-feature-bench__footer small {
+  color: #e8c9b3;
+  font: 500 10px/1 Inter, sans-serif;
+}
+
+#approach [data-syren-room-frame="true"] {
+  position: relative;
+  overflow: hidden;
+}
+
+#approach [data-syren-room-concept="true"] {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2;
+  max-width: calc(100% - 32px);
+  padding: 9px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.56);
+  border-radius: 999px;
+  background: rgba(34, 28, 23, 0.75);
+  color: #fffaf2;
+  font: 500 11px/1 Inter, sans-serif;
+  white-space: nowrap;
+}
+
+section[data-framer-name="Impact Section"] [data-syren-purpose-label="true"] {
+  color: #fffaf2;
+  font: 600 11px/1.3 Inter, sans-serif;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+section[data-framer-name="Impact Section"] [data-syren-impact-card="true"] {
+  position: relative;
+}
+
+section[data-framer-name="Impact Section"] [data-syren-impact-detail="true"] {
+  position: absolute;
+  top: 48%;
+  left: 24px;
+  display: flex;
+  max-width: calc(100% - 48px);
+  flex-direction: column;
+  gap: 5px;
+  transform: translateY(-50%);
+}
+
+section[data-framer-name="Impact Section"] [data-syren-impact-detail="true"] strong {
+  color: #b64f2e;
+  font: 600 clamp(22px, 2.4vw, 31px)/1.1 Inter, sans-serif;
+  letter-spacing: -0.04em;
+}
+
+section[data-framer-name="Impact Section"] [data-syren-impact-detail="true"] span {
+  color: #756f64;
+  font: 500 12px/1.25 Inter, sans-serif;
+}

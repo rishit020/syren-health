@@ -20,7 +20,7 @@ npm run preview -- --port 4173
 
 ## Current website
 
-- `/`: hero, features/device, purpose, how it works, progress, approach, FAQ and footer.
+- `/`: hero, features/device, purpose, how it works, engineering proof, progress, approach, FAQ and footer.
 - `/contact`: Syren inquiry form that submits directly through FormSubmit to **rishit020@gmail.com**. FormSubmit was activated and an actual website submission was verified in Gmail (it initially landed in Spam). No email app is required.
 - `/404` and unknown paths: branded not-found page.
 
@@ -44,9 +44,9 @@ Older scripts and comparison reports document the original Luvia reconstruction 
 
 ## Implementation and assets
 
-`src/App.jsx` supplies routing and responsive template selection. `src/home-content.js` adapts the homepage; `src/site-chrome.js` owns shared navigation, FAQ and footer; `src/contact-content.js` adapts the contact form. `src/controllers.js` handles interactions and motion. Native progress visuals are in `src/progress-section.*`; approved photographic cards are in `src/how-it-works.*`.
+`src/App.jsx` supplies routing and responsive template selection. `src/home-content.js` adapts the homepage; `src/home-visuals.css` styles its native bench diagram and visual labels; `src/site-chrome.js` owns shared navigation, FAQ and footer; `src/contact-content.js` adapts the contact form. `src/controllers.js` handles interactions and motion. Native progress visuals are in `src/progress-section.*`; the engineering section is in `src/technical-proof.*`; photographic and dashboard cards are in `src/how-it-works.*`.
 
-All media and fonts are served locally. The product photography is illustrative AI-generated artwork based on supplied device renders. The product is described as a prototype; there are no customer testimonials or validated performance statistics.
+All media and fonts are served locally. The room photograph is an illustrative concept with an on-image label. The device feature uses a native diagram of the current single-room bench topology. The two `clinic-overview-*.png` assets are captures of the actual clinic dashboard UI running on its synthetic mock client, not photographs, live patient data or proof of integrated hardware. The product is described as a prototype; there are no customer testimonials or validated performance statistics. See `docs/TECHNICAL_CLAIMS.md` for source and status of public technical claims.
 
 See `docs/ATTRIBUTION.md` for template provenance and own-project usage boundaries, `docs/PROGRESS.md` for iteration history, and `docs/KNOWN-DIFFERENCES.md` for current limitations.
 

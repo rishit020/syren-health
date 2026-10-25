@@ -1,0 +1,85 @@
+#engineering.syren-engineering {
+  scroll-margin-top: 90px;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  padding: clamp(82px, 8vw, 118px) 24px;
+  background: #26211a;
+  color: #fff9f0;
+}
+
+#engineering * { box-sizing: border-box; }
+#engineering .syren-engineering__inner { max-width: 1200px; margin: 0 auto; }
+#engineering .syren-engineering__lead { display: grid; grid-template-columns: 1.2fr .8fr; gap: 72px; align-items: end; margin-bottom: 42px; }
+#engineering .syren-engineering__eyebrow { margin: 0 0 20px; color: #f2a780; font: 600 12px/1.2 Inter, sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+#engineering .syren-engineering__eyebrow span { display: inline-block; margin-left: 14px; padding: 5px 8px; border: 1px solid #8d7666; border-radius: 4px; color: #d5c5b8; font-size: 10px; letter-spacing: .08em; vertical-align: middle; }
+#engineering h2, #engineering h3, #engineering p { opacity: 1 !important; transform: none !important; }
+#engineering h2 { max-width: 760px; margin: 0; font: 500 clamp(43px, 5.2vw, 70px)/1.03 Domine, serif; letter-spacing: -.048em; }
+#engineering .syren-engineering__lead > p { max-width: 390px; margin: 0 0 5px; color: #d1c2b6; font: 400 clamp(16px, 1.5vw, 19px)/1.5 Inter, sans-serif; }
+
+#engineering .syren-engineering__modalities { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; overflow: hidden; border: 1px solid #665448; border-radius: 14px; background: #665448; }
+#engineering .syren-engineering__modalities article { min-height: 290px; padding: 25px 27px 29px; background: #322a23; }
+#engineering .syren-engineering__modality-top { display: flex; height: 49px; align-items: start; justify-content: space-between; color: #dfc6b3; }
+#engineering .syren-engineering__modality-number { font: 500 12px/1 Inter, sans-serif; letter-spacing: .16em; }
+#engineering .syren-engineering__signal { display: flex; gap: 4px; align-items: center; height: 26px; }
+#engineering .syren-engineering__signal i { display: block; width: 6px; border: 1px solid #e79b73; border-left: 0; border-radius: 0 100% 100% 0; }
+#engineering .syren-engineering__signal i:nth-child(1) { height: 8px; } #engineering .syren-engineering__signal i:nth-child(2) { height: 16px; } #engineering .syren-engineering__signal i:nth-child(3) { height: 24px; }
+#engineering .syren-engineering__pixels { display: grid; grid-template-columns: repeat(3, 5px); gap: 2px; }
+#engineering .syren-engineering__pixels i { width: 5px; height: 5px; background: #e79b73; opacity: .4; } #engineering .syren-engineering__pixels i:nth-child(2), #engineering .syren-engineering__pixels i:nth-child(5), #engineering .syren-engineering__pixels i:nth-child(8) { opacity: 1; }
+#engineering .syren-engineering__waves { color: #e79b73; font: 30px/.6 Inter, sans-serif; }
+#engineering .syren-engineering__spec { margin: 0 0 15px; color: #f5ad85; font: 500 clamp(29px, 3vw, 38px)/1 Domine, serif; letter-spacing: -.04em; }
+#engineering .syren-engineering__spec span { font: 500 13px/1.4 Inter, sans-serif; letter-spacing: .01em; }
+#engineering .syren-engineering__modalities h3 { margin: 0 0 11px; color: #fff9f0; font: 600 16px/1.2 Inter, sans-serif; }
+#engineering .syren-engineering__modalities article > p:last-child { max-width: 320px; margin: 0; color: #cfc0b5; font: 400 14px/1.5 Inter, sans-serif; }
+
+#engineering .syren-engineering__topology { display: grid; grid-template-columns: 1.3fr .7fr; gap: 16px; margin-top: 16px; }
+#engineering .syren-engineering__topology-card { min-width: 0; padding: 25px 27px 24px; border: 1px solid #665448; border-radius: 14px; background: #2d261f; }
+#engineering .syren-engineering__topology-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 27px; }
+#engineering .syren-engineering__topology-head span { font: 600 16px/1.2 Inter, sans-serif; }
+#engineering .syren-engineering__topology-head strong { padding: 6px 9px; border: 1px solid #93684e; border-radius: 4px; color: #f5ad85; font: 600 10px/1 Inter, sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+#engineering .syren-engineering__topology-card--planned .syren-engineering__topology-head strong { border-color: #6d675f; color: #c9bcb0; }
+#engineering .syren-engineering__flow { display: flex; align-items: center; gap: 8px; margin-bottom: 19px; }
+#engineering .syren-engineering__flow > div { flex: 1; min-width: 0; padding: 15px 13px; border: 1px solid #6f5746; border-radius: 8px; background: #3c3026; }
+#engineering .syren-engineering__flow small, #engineering .syren-engineering__flow b, #engineering .syren-engineering__flow div span { display: block; }
+#engineering .syren-engineering__flow small { margin-bottom: 9px; color: #c3a995; font: 500 10px/1.2 Inter, sans-serif; text-transform: uppercase; letter-spacing: .07em; }
+#engineering .syren-engineering__flow b { color: #fff9f0; font: 600 14px/1.2 Inter, sans-serif; }
+#engineering .syren-engineering__flow div span { margin-top: 4px; color: #cfc0b5; font: 400 11px/1.3 Inter, sans-serif; }
+#engineering .syren-engineering__arrow { color: #ed9b70; font: 24px/1 Inter, sans-serif; }
+#engineering .syren-engineering__topology-card > p { margin: 0; color: #d1c2b6; font: 400 13px/1.5 Inter, sans-serif; }
+#engineering .syren-engineering__planned-diagram { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; margin-bottom: 18px; color: #e6d3c5; text-align: center; }
+#engineering .syren-engineering__planned-diagram span { padding: 16px 4px; border: 1px dashed #8a7668; border-radius: 8px; font: 500 12px/1.2 Inter, sans-serif; }
+#engineering .syren-engineering__planned-diagram i { grid-column: 1 / -1; width: 1px; height: 15px; margin: 0 auto; background: #8a7668; }
+#engineering .syren-engineering__planned-diagram b { grid-column: 1 / -1; padding: 11px; border: 1px solid #8a7668; border-radius: 7px; font: 500 12px/1.2 Inter, sans-serif; }
+
+#engineering .syren-engineering__dashboard { margin: clamp(54px, 6vw, 80px) 0 0; }
+#engineering .syren-engineering__dashboard figcaption { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 22px; }
+#engineering .syren-engineering__dashboard .syren-engineering__eyebrow { margin-bottom: 11px; }
+#engineering .syren-engineering__dashboard h3 { margin: 0; font: 500 clamp(32px, 3.8vw, 48px)/1.08 Domine, serif; letter-spacing: -.04em; }
+#engineering .syren-engineering__dashboard figcaption > p { max-width: 390px; margin: 0; color: #d1c2b6; font: 400 14px/1.5 Inter, sans-serif; }
+#engineering .syren-engineering__screen { overflow: hidden; padding: 10px; border: 1px solid #8d7666; border-radius: 14px; background: #514237; box-shadow: 0 24px 70px #120e0a55; }
+#engineering .syren-engineering__screen img { display: block; width: 100%; height: auto; border-radius: 6px; }
+#engineering .syren-engineering__disclosure { margin: 14px 0 0; color: #c6b7aa; font: 500 11px/1.4 Inter, sans-serif; letter-spacing: .02em; }
+
+@media (max-width: 900px) {
+  #engineering .syren-engineering__lead, #engineering .syren-engineering__topology { grid-template-columns: 1fr; gap: 24px; }
+  #engineering .syren-engineering__lead > p { max-width: 700px; }
+  #engineering .syren-engineering__modalities article { padding: 22px 20px; }
+}
+@media (max-width: 640px) {
+  #engineering.syren-engineering { padding: 76px 16px; }
+  #engineering .syren-engineering__lead { margin-bottom: 31px; }
+  #engineering .syren-engineering__eyebrow span { margin: 9px 0 0; }
+  #engineering h2 { font-size: clamp(39px, 11vw, 52px); }
+  #engineering .syren-engineering__modalities { grid-template-columns: 1fr; }
+  #engineering .syren-engineering__modalities article { min-height: 0; padding: 23px; }
+  #engineering .syren-engineering__modality-top { height: 38px; }
+  #engineering .syren-engineering__topology-card { padding: 22px 18px; }
+  #engineering .syren-engineering__flow { flex-wrap: wrap; }
+  #engineering .syren-engineering__flow > div { flex-basis: calc(50% - 25px); }
+  #engineering .syren-engineering__flow > div:last-child { flex-basis: 100%; }
+  #engineering .syren-engineering__flow > .syren-engineering__arrow:nth-of-type(2) { display: none; }
+  #engineering .syren-engineering__dashboard figcaption { display: block; }
+  #engineering .syren-engineering__dashboard figcaption > p { margin-top: 15px; }
+  #engineering .syren-engineering__screen { padding: 5px; }
+  #engineering .syren-engineering__screen img { width: 760px; max-width: none; transform: translateX(-86px); }
+}

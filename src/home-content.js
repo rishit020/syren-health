@@ -1,6 +1,8 @@
 import { applyHowItWorks } from "./how-it-works.js";
 import { applyProgressSection } from "./progress-section.js";
 import { applySiteChrome } from "./site-chrome.js";
+import { applyTechnicalProof } from "./technical-proof.js";
+import "./home-visuals.css";
 
 // Content-only adaptation. Keep the captured component tree, CSS and motion.
 export const homeTitle = "Syren Health | Contactless Overnight Awareness";
@@ -10,7 +12,7 @@ const heroCopy = new Map([
   ["Stop managing symptoms and start engineering your vitality. Luvia integrates deep biomarker analysis with real-time AI insights.", "Syren Health is developing contactless room monitoring to help care teams notice overnight activity that may need a closer look."],
   ["+500 Members", "Contactless sensing"],
   ["Helping high-performers", "Room-based monitoring"],
-  ["+15 Years of longevity", "No wearable needed"],
+  ["+15 Years of longevity", "Radar · thermal · Wi-Fi CSI"],
   ["Focused on extending healthspan", "Designed for resident comfort"],
   ["98% Sleep improvement", "Caregiver awareness"],
   ["Proven results in recovery", "In development for senior care"],
@@ -18,15 +20,15 @@ const heroCopy = new Map([
 
 const featureCopy = new Map([
   ["Driving measurable health results.", "Built for overnight awareness."],
-  ["Our platform tracks your unique biological data to help you understand what’s happening inside your body.", "The Syren prototype explores contactless monitoring to help care teams recognize moments that deserve a closer look."],
-  ["Biological Optimization", "Contactless Sensing"],
-  ["Precision tools designed to optimize your internal health metrics.", "Exploring room activity without a resident wearable or alert button."],
+  ["Our platform tracks your unique biological data to help you understand what’s happening inside your body.", "Our bench prototype brings 60 GHz radar, a 32 × 24 thermal array and Wi-Fi CSI into one room-level engineering view."],
+  ["Biological Optimization", "Three sensing modalities"],
+  ["Precision tools designed to optimize your internal health metrics.", "Radar, thermal and a separated Wi-Fi transmitter/receiver pair explore motion and presence without a wearable."],
   ["Real-Time Wellness", "Overnight Awareness"],
   ["Monitor your vitals with instant alerts and expert support.", "Designed around the moments between routine caregiver check-ins."],
-  ["Evidence-Based Living", "Human Oversight"],
-  ["Make better decisions using data-driven, scientific insights.", "Building toward useful prompts for a caregiver to assess and act."],
-  ["Longevity Generation", "Resident Dignity"],
-  ["Build personalized systems that evolve with your biological needs.", "Developing with resident comfort, privacy and dignity in mind."],
+  ["Evidence-Based Living", "Quality-aware output"],
+  ["Make better decisions using data-driven, scientific insights.", "The prototype withholds stale or unsupported readings instead of filling gaps with invented values."],
+  ["Longevity Generation", "Planned room mesh"],
+  ["Build personalized systems that evolve with your biological needs.", "We are designing coordinated nodes across rooms; multi-room sensing and resident attribution still need validation."],
 ]);
 
 const impactCopy = new Map([
@@ -43,10 +45,17 @@ const impactCopy = new Map([
   ["Individual biomarkers tracked to provide a full picture of your health.", "Exploring contactless sensing of movement and presence in the room."],
   ["12k+", "Thermal"],
   ["Personalized health protocols generated for our global members.", "Using a thermal array to explore patterns in room activity."],
-  ["98%", "Night"],
-  ["Average improvement in sleep quality and nightly recovery scores.", "Developing awareness for the hours between routine caregiver check-ins."],
+  ["98%", "Wi-Fi CSI"],
+  ["Average improvement in sleep quality and nightly recovery scores.", "Sampling channel changes between a separate transmit node and the ESP32-S3 receiver on the bench."],
   ["24/7", "Care"],
   ["Continuous monitoring to catch health changes before they happen.", "Keeping assessment and response in the hands of the care team."],
+]);
+
+const impactDetails = new Map([
+  ["Radar", ["60 GHz", "room-level sensing"]],
+  ["Thermal", ["32 × 24", "thermal array"]],
+  ["Wi-Fi CSI", ["C6 → S3", "bench sensing link"]],
+  ["Care", ["Human review", "care team judgment"]],
 ]);
 
 const approachCopy = new Map([
@@ -68,7 +77,61 @@ const icons = {
   care: '<circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3m2-16a3 3 0 0 1 0 6m1 4a5 5 0 0 1 3 4v2"/>',
   night: '<path d="M21 13a9 9 0 1 1-10-10 7 7 0 0 0 10 10Z"/><path d="M18 2v4m-2-2h4"/>',
   dignity: '<path d="M12 3 3 7v6c0 5 9 9 9 9s9-4 9-9V7l-9-4Z"/><path d="M9 12c0-3 3-3 3-1 0-2 3-2 3 1 0 2-3 4-3 4s-3-2-3-4Z"/>',
+  quality: '<path d="M12 3 4 6v6c0 5 3.5 7.8 8 9 4.5-1.2 8-4 8-9V6l-8-3Z"/><path d="m8.5 12 2.4 2.4 4.7-4.8"/>',
+  mesh: '<circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M6.8 7.2 10.7 16M17.2 7.2 13.3 16M7 6h10"/>',
+  routine: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  context: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5M8 11h5M10.5 8.5v5"/>',
 };
+
+const benchVisual = `
+  <div class="syren-feature-bench" data-syren-feature-bench="true" role="img" aria-label="Current single-room bench setup: a separate ESP32-C6 Wi-Fi transmitter sends a signal to an ESP32-S3 CSI receiver. The receiver also takes 60 GHz radar and 32 by 24 thermal inputs and sends a USB stream to a local dashboard.">
+    <div class="syren-feature-bench__top"><span>Inside the bench setup</span><strong>Current prototype</strong></div>
+    <h3>Three inputs.<br>One receiver.</h3>
+    <p>Measured signal path in one room.</p>
+    <div class="syren-feature-bench__wireless">
+      <div><small>Separate TX</small><b>ESP32-C6</b></div>
+      <span><i></i>Wi-Fi CSI<i></i></span>
+      <div><small>Bench RX</small><b>ESP32-S3</b></div>
+    </div>
+    <div class="syren-feature-bench__inputs"><span>60 GHz radar</span><span>32 × 24 thermal</span><span>CSI samples</span></div>
+    <div class="syren-feature-bench__footer"><span>USB → local dashboard</span><small>Engineering data</small></div>
+  </div>
+`;
+
+function renderBenchVisual(root, picture) {
+  if (!picture || picture.dataset.syrenBenchVisual) return;
+  const template = root.createElement("template");
+  template.innerHTML = benchVisual.trim();
+  picture.replaceChildren(template.content.cloneNode(true));
+  picture.dataset.syrenBenchVisual = "true";
+}
+
+function labelRoomConcept(root, image) {
+  const frame = image?.parentElement?.parentElement;
+  if (!frame || frame.querySelector("[data-syren-room-concept]")) return;
+  frame.dataset.syrenRoomFrame = "true";
+  const label = root.createElement("span");
+  label.dataset.syrenRoomConcept = "true";
+  label.textContent = "Illustrative room placement";
+  frame.append(label);
+}
+
+function addImpactDetails(root, section) {
+  section?.querySelectorAll('[data-framer-name="Title"] p').forEach((heading) => {
+    const content = impactDetails.get(heading.textContent.trim());
+    const card = heading.closest('[data-framer-name="Desktop"],[data-framer-name="Tablet"],[data-framer-name="Mobile"]');
+    if (!content || !card || card.querySelector('[data-syren-impact-detail]')) return;
+    card.dataset.syrenImpactCard = "true";
+    const detail = root.createElement("div");
+    detail.dataset.syrenImpactDetail = "true";
+    const value = root.createElement("strong");
+    const description = root.createElement("span");
+    value.textContent = content[0];
+    description.textContent = content[1];
+    detail.append(value, description);
+    card.querySelector('[data-framer-name="Description"]')?.before(detail);
+  });
+}
 
 function replaceCopy(root, copy) {
   root?.querySelectorAll("h1,h2,h3,h4,p").forEach((element) => {
@@ -118,6 +181,12 @@ export function applyScopedHomeContent(root) {
 
   const impact = root.querySelector('section[data-framer-name="Impact Section"]');
   replaceCopy(impact, impactCopy);
+  addImpactDetails(root, impact);
+  const oldRating = impact?.querySelector('[data-framer-name="Stars"]');
+  if (oldRating) {
+    oldRating.replaceChildren("Development goal");
+    oldRating.dataset.syrenPurposeLabel = "true";
+  }
   // Preserve the original emphasis nodes and all motion hooks in the purpose card.
   const purpose = [...(impact?.querySelectorAll("p") || [])]
     .find((p) => p.textContent.includes("has completely changed how I track"));
@@ -128,6 +197,7 @@ export function applyScopedHomeContent(root) {
   }
 
   applyHowItWorks(root);
+  applyTechnicalProof(root);
   applyProgressSection(root);
   const approach = root.querySelector('section[data-framer-name="About Section"]');
   if (approach) {
@@ -139,8 +209,15 @@ export function applyScopedHomeContent(root) {
   if (approachImage) {
     approachImage.setAttribute("src", "/syren/approach-room-v1.webp");
     approachImage.removeAttribute("srcset");
-    approachImage.setAttribute("alt", "Syren prototype on a bedside table in an empty, warmly lit resident room.");
+    approachImage.setAttribute("alt", "Illustrative Syren room placement with a concept enclosure on a bedside table; not a deployed installation.");
+    labelRoomConcept(root, approachImage);
   }
+  approach?.querySelectorAll("h4").forEach((heading) => {
+    const card = heading.closest('[data-framer-name="Default"]');
+    const icon = card?.querySelector('[data-framer-name="Icon"] svg');
+    const name = heading.textContent;
+    replaceIcon(icon, name.includes("routines") ? "routine" : name.includes("information") ? "context" : "care");
+  });
 
   const features = root.querySelector("#features");
   replaceCopy(features, featureCopy);
@@ -149,19 +226,12 @@ export function applyScopedHomeContent(root) {
   features.querySelectorAll("h4").forEach((heading) => {
     const card = heading.closest('[data-framer-name="Desktop"],[data-framer-name="Mobile"],[data-framer-name="Tablet"]');
     const name = heading.textContent;
-    replaceIcon(card?.querySelector("svg"), name.includes("Sensing") ? "sensing" : name.includes("Overnight") ? "night" : name.includes("Human") ? "care" : "dignity");
+    replaceIcon(card?.querySelector("svg"), name.includes("sensing") ? "sensing" : name.includes("Overnight") ? "night" : name.includes("Quality") ? "quality" : "mesh");
   });
   const picture = features.querySelector('[data-framer-name="Center image"]');
-  const image = picture?.querySelector("img");
-  if (image) {
+  if (picture) {
     picture.id = "device";
     picture.style.scrollMarginTop = "110px";
-    image.setAttribute("src", "/syren/device-warm-v1.webp");
-    image.setAttribute("srcset", "/syren/device-warm-v1-640.webp 640w, /syren/device-warm-v1-960.webp 960w, /syren/device-warm-v1.webp 1145w");
-    image.setAttribute("width", "1145");
-    image.setAttribute("height", "1374");
-    image.setAttribute("alt", "Concept image of the Syren Health prototype on a warm stone bedside surface, with its silver enclosure, recessed sensor and branded front visible.");
-    image.style.objectFit = "cover";
-    image.style.backgroundColor = "#f3eddf";
+    renderBenchVisual(root, picture);
   }
 }

@@ -5,7 +5,7 @@ const progressMarkup = `
     <header class="syren-progress__header syren-progress__reveal" style="--progress-delay: 0ms">
       <p class="syren-progress__eyebrow">Our progress</p>
       <h2 id="syren-progress-heading">Where we are today.</h2>
-      <p class="syren-progress__intro">Syren is in development. We’re shaping the prototype and the questions it needs to answer.</p>
+      <p class="syren-progress__intro">A sensing bench and clinic interface exist today. Multi-room coordination and clinical performance remain open engineering work.</p>
     </header>
 
     <div class="syren-progress__cards">
@@ -29,14 +29,19 @@ const progressMarkup = `
               </span>
               <span>Thermal</span>
             </div>
+            <div class="syren-progress__signal-path"><span></span><span></span><span></span></div>
+            <div class="syren-progress__sensor syren-progress__sensor--csi">
+              <svg viewBox="0 0 40 40"><path d="M5 14c5-6 10 6 15 0s10-6 15 0M5 25c5-6 10 6 15 0s10-6 15 0"></path></svg>
+              <span>CSI</span>
+            </div>
           </div>
           <div class="syren-progress__context-line"><span></span>Room context</div>
         </div>
         <div class="syren-progress__card-copy">
-          <p class="syren-progress__index">01 / Building</p>
-          <h3>The prototype.</h3>
-          <p>A room-based concept bringing radar and thermal sensing together.</p>
-          <span class="syren-progress__status">In development</span>
+          <p class="syren-progress__index">01 / Bench</p>
+          <h3>The sensing prototype.</h3>
+          <p>Radar, thermal and Wi-Fi CSI are captured in one local engineering setup.</p>
+          <span class="syren-progress__status">Bench-tested</span>
         </div>
       </article>
 

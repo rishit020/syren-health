@@ -25,10 +25,26 @@ for(const [name,width,height]of[['desktop',1440,900],['comment',1356,924],['lapt
   assert.equal(await page.locator('footer form').count(),0);
   const links=await page.locator('a[href]').evaluateAll(nodes=>nodes.filter(n=>n.getBoundingClientRect().width).map(n=>({text:n.textContent.trim(),href:n.getAttribute('href')})));
   for(const link of links){
-   if(link.href.startsWith('/'))assert.ok(/^\/(?:#(?:top|approach|device|features|how-it-works|testimonials|faq)|contact)?$/.test(link.href),`Unexpected link ${link.href}`);
+   if(link.href.startsWith('/'))assert.ok(/^\/(?:#(?:top|approach|device|features|how-it-works|engineering|testimonials|faq)|contact)?$/.test(link.href),`Unexpected link ${link.href}`);
   }
   if(route==='/'){
-   for(const id of['top','approach','device','features','how-it-works','testimonials','faq'])assert.equal(await page.locator(`[id="${id}"]`).count(),1,`${name} anchor ${id}`);
+   for(const id of['top','approach','device','features','how-it-works','engineering','testimonials','faq'])assert.equal(await page.locator(`[id="${id}"]`).count(),1,`${name} anchor ${id}`);
+   const bench=page.locator('#features [data-syren-feature-bench="true"]');
+   assert.equal(await bench.count(),1,`${name} bench diagram`);
+   assert.match(await bench.innerText(),/Current prototype[\s\S]*ESP32-C6[\s\S]*Wi-Fi CSI[\s\S]*ESP32-S3[\s\S]*60 GHz radar[\s\S]*32 × 24 thermal[\s\S]*USB → local dashboard/);
+   assert.equal(await page.locator('#features [data-framer-name="Center image"] img').count(),0,`${name} no invented device render`);
+   assert.equal(await page.locator('#approach [data-syren-room-concept]').innerText(),'Illustrative room placement');
+   assert.equal(await page.locator('section[data-framer-name="Impact Section"] [data-syren-purpose-label]').innerText(),'DEVELOPMENT GOAL');
+   assert.equal(await page.locator('section[data-framer-name="Impact Section"] [data-framer-name="Stars"] svg').count(),0,`${name} no rating stars`);
+   const impactDetails=await page.locator('section[data-framer-name="Impact Section"] [data-syren-impact-detail]').allInnerTexts();
+   for(const expected of['60 GHz','32 × 24','C6 → S3','Human review'])assert.ok(impactDetails.some(detail=>detail.includes(expected)),`${name} ${expected} purpose detail`);
+   for(const icon of['quality','mesh','routine','context'])assert.ok(await page.locator(`svg[data-syren-icon="${icon}"]`).count()>0,`${name} ${icon} icon`);
+   const engineering=await page.locator('#engineering').innerText();
+   assert.match(engineering,/60 GHz/);assert.match(engineering,/32 × 24/);assert.match(engineering,/Wi-Fi CSI/);
+   assert.match(engineering,/Built & measured/i);assert.match(engineering,/Coordinated room mesh/);assert.match(engineering,/Planned/i);
+   assert.match(engineering,/synthetic data · not a live clinical deployment/);
+   assert.equal(await page.locator('#engineering img').getAttribute('src'),'/syren/clinic-overview-wide.png');
+   assert.equal(await page.locator('a[data-syren-how-step="3"] img').getAttribute('src'),'/syren/clinic-overview-card.png');
    assert.equal(await page.locator('section[data-syren-home] video').getAttribute('src'),'/assets/7fb2ddfe0ad9a1.webm');
    await page.locator('#faq').scrollIntoViewIfNeeded();await settle(page,600);
    for(const faq of faqContent){

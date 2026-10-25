@@ -7,58 +7,62 @@ const steps = [
     title: "Awareness through the night.",
     description: "More context between caregiver check-ins.",
     href: "/#device",
-    image: "card-room-approved",
-    alt: "Warm bedroom with a room-activity concept graph and the Syren device on a bedside shelf.",
   },
   {
     number: "2",
     label: "Contactless sensing",
-    title: "Radar meets thermal.",
-    description: "Exploring movement and room activity.",
+    title: "Radar, thermal and Wi-Fi CSI.",
+    description: "Three sensing streams on the bench.",
     href: "/#features",
-    image: "card-sensing-approved",
-    alt: "Syren device concept with separate radar and thermal illustrations.",
   },
   {
     number: "3",
     label: "Caregiver review",
-    title: "Context for the care team.",
-    description: "An overview built around caregiver review.",
-    href: "/contact",
-    image: "card-caregiver-approved",
-    alt: "Caregiver dashboard concept with fictional sample data shown on a tablet in a warm room.",
+    title: "An actual dashboard UI.",
+    description: "Current clinic interface with synthetic records.",
+    href: "/#engineering",
   },
+];
+
+const cardVisuals = [
+  `<div class="syren-how-visual syren-how-visual--room" data-syren-how-visual="room">
+    <img src="/syren/approach-room-v1.webp" width="1450" height="1086" alt="Illustrative bedside placement in a resident room; this is a concept render, not a deployed device." loading="lazy" decoding="async" />
+    <div class="syren-how-visual__room-shade"></div>
+    <div class="syren-how-visual__top"><span>01 / Room awareness</span><span class="syren-how-visual__tag">Placement concept</span></div>
+    <div class="syren-how-visual__room-copy"><h3>Awareness through the night.</h3><p>More context between caregiver check-ins.</p><span class="syren-how-visual__arrow" aria-hidden="true">↗</span></div>
+  </div>`,
+  `<div class="syren-how-visual syren-how-visual--sensing" data-syren-how-visual="sensing">
+    <div class="syren-how-visual__top"><span>02 / Contactless sensing</span><span class="syren-how-visual__tag">Bench setup</span></div>
+    <h3>Three sensing streams.<br>One room.</h3>
+    <p class="syren-how-visual__lead">60 GHz radar · 32 × 24 thermal · Wi-Fi CSI</p>
+    <div class="syren-how-visual__bench" aria-label="Separate ESP32-C6 transmitter sends a wireless signal to an ESP32-S3 receiver that captures CSI alongside wired radar and thermal inputs.">
+      <div class="syren-how-visual__bench-node"><small>ESP32-C6</small><strong>TX node</strong></div>
+      <div class="syren-how-visual__rf"><span>Wi-Fi signal</span><i></i></div>
+      <div class="syren-how-visual__bench-node syren-how-visual__bench-node--rx"><small>ESP32-S3</small><strong>CSI receiver</strong></div>
+    </div>
+    <div class="syren-how-visual__inputs"><span>60 GHz radar</span><span>Thermal array</span><span>CSI samples</span></div>
+    <div class="syren-how-visual__foot"><span>Measured on one bench link</span><span class="syren-how-visual__arrow" aria-hidden="true">↗</span></div>
+  </div>`,
+  `<div class="syren-how-visual syren-how-visual--dashboard" data-syren-how-visual="dashboard">
+    <div class="syren-how-visual__top"><span>03 / Caregiver review</span><span class="syren-how-visual__tag">Current UI</span></div>
+    <h3>A real clinic<br>dashboard.</h3>
+    <p class="syren-how-visual__lead">Care-team overview, attention queue and monitoring status.</p>
+    <div class="syren-how-visual__screen"><div class="syren-how-visual__screen-bar"><span></span><span></span><span></span><strong>Clinic overview · Demo</strong></div><img src="/syren/clinic-overview-card.png" width="900" height="1200" alt="Actual Syren clinic overview interface with synthetic resident records, an attention queue and monitoring coverage." loading="lazy" decoding="async" /></div>
+    <div class="syren-how-visual__foot"><span>Synthetic records only</span><span class="syren-how-visual__arrow" aria-hidden="true">↗</span></div>
+  </div>`,
 ];
 
 function setText(element, value) {
   if (element) element.textContent = value;
 }
 
-function replaceCardMedia(root, card, step) {
+function replaceCardMedia(root, card, index) {
+  if (card.querySelector("[data-syren-how-visual]")) return;
   const current = card.querySelector("video,img[data-syren-how-image]");
   if (!current) return;
-
-  const image = root.createElement("img");
-  image.dataset.syrenHowImage = step.image;
-  image.setAttribute("src", `/syren/${step.image}.webp`);
-  image.setAttribute(
-    "srcset",
-    `/syren/${step.image}-640.webp 640w, /syren/${step.image}-960.webp 960w, /syren/${step.image}.webp 1086w`,
-  );
-  image.setAttribute(
-    "sizes",
-    "(min-width: 1200px) 387px, (min-width: 810px) calc((100vw - 80px) / 3), calc(100vw - 32px)",
-  );
-  image.setAttribute("width", "1086");
-  image.setAttribute("height", "1448");
-  image.setAttribute("alt", step.alt);
-  image.setAttribute("decoding", "async");
-  image.setAttribute("loading", "lazy");
-  image.setAttribute(
-    "style",
-    "display:block;width:100%;height:100%;object-fit:contain;object-position:center;border-radius:0",
-  );
-  current.replaceWith(image);
+  const template = root.createElement("template");
+  template.innerHTML = cardVisuals[index].trim();
+  current.replaceWith(template.content.cloneNode(true));
 }
 
 export function applyHowItWorks(root) {
@@ -77,7 +81,7 @@ export function applyHowItWorks(root) {
   );
   setText(
     supportingCopy,
-    "A closer look at the Syren concept, from contactless sensing to caregiver review.",
+    "An illustrated room concept, a measured sensing bench and the current clinic interface.",
   );
 
   const cards = [
@@ -98,6 +102,6 @@ export function applyHowItWorks(root) {
     setText(card.querySelector("h4"), step.title);
     setText(card.querySelector("strong"), step.number);
     setText(card.querySelector('[data-framer-name="Stat"] .framer-m5clq p'), step.description);
-    replaceCardMedia(root, card, step);
+    replaceCardMedia(root, card, index);
   });
 }
