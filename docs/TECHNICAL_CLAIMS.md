@@ -14,4 +14,6 @@ Checked October 24, 2026 against `aksharkakkad-web/MedicalHardware`, branch `har
 
 The homepage room card uses the existing `approach-room-v1.webp` illustration. It is visibly labeled as a placement concept. The sensing card is a native diagram derived from the bench topology above, not a photograph or a multi-room network diagram.
 
+The homepage purpose cards show hardware specifications and the intended human review workflow. They contain no customer rating, outcome percentage, or clinical performance claim. The remaining generated room scene is visibly labeled as illustrative; the dashboard images are labeled as synthetic software captures.
+
 Keep public wording at the prototype/research stage until real hardware-to-product integration, multi-room sensing, and performance are separately verified. Do not use these screenshots or bench rates as clinical validation.
