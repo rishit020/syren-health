@@ -38,7 +38,11 @@ function createDialog() {
     const motion = event.target.closest("[data-sensor-motion]");
     if (motion && !motion.disabled) { paused = !paused; render(); dialog.querySelector("[data-sensor-motion]")?.focus(); }
   });
-  dialog.addEventListener("close", () => opener?.focus());
+  dialog.addEventListener("close", () => {
+    const focus = document.activeElement;
+    if (!opener?.isConnected && (focus === document.body || focus === document.documentElement || dialog.contains(focus))) document.querySelector('a[data-syren-how-step="2"]')?.focus();
+  });
+  window.addEventListener("popstate", () => { if (dialog.open) dialog.close(); });
   document.body.append(dialog);
 }
 export function openSensorDemo(trigger, initial = "radar") {

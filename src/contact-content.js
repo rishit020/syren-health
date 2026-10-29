@@ -3,6 +3,7 @@ export function applyContactContent(root) {
   const heading = [...root.querySelectorAll("h1")].find((node) => node.textContent.trim() === "Design your health.");
   if (!heading) return;
   const section = heading.closest("section");
+  section.dataset.syrenContactPage = "true";
   const copy = new Map([
     ["Get started", "Get in touch"],
     ["Design your health.", "Let’s talk about care."],

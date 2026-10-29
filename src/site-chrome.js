@@ -46,7 +46,7 @@ export const faqQuestions = faqContent.map(({ question }) => question);
 const navigation = {
   "/about": ["About", "/#approach"],
   "/pricing": ["Device", "/#device"],
-  "/success-stories": ["Features", "/#features"],
+  "/success-stories": ["Experience", "/#care-experience"],
   "/news": ["Contact", "/contact"],
 };
 

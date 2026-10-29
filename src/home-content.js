@@ -2,6 +2,7 @@ import { applyHowItWorks } from "./how-it-works.js";
 import { applyProgressSection } from "./progress-section.js";
 import { applySiteChrome } from "./site-chrome.js";
 import { applyTechnicalProof } from "./technical-proof.js";
+import { applyCareExperience } from "./care-experience.js";
 import "./home-visuals.css";
 import "./visual-refresh.css";
 
@@ -30,33 +31,6 @@ const featureCopy = new Map([
   ["Make better decisions using data-driven, scientific insights.", "The prototype withholds stale or unsupported readings instead of filling gaps with invented values."],
   ["Longevity Generation", "Planned room mesh"],
   ["Build personalized systems that evolve with your biological needs.", "We are designing coordinated nodes across rooms; multi-room sensing and resident attribution still need validation."],
-]);
-
-const impactCopy = new Map([
-  ["Our Impact", "Our Purpose"],
-  ["Scale your wellness.", "More context for care."],
-  ["Experience a modular stack designed for high-performance health optimization.", "Developing contactless sensing to support overnight care."],
-  ["Efficiency", "Awareness"],
-  ["Precision", "Comfort"],
-  ["Growth", "Dignity"],
-  ["Support", "Care teams"],
-  ["Sarah Mitchel", "Our purpose"],
-  ["Founder of Aura", "Supporting overnight care"],
-  ["160+", "Radar"],
-  ["Individual biomarkers tracked to provide a full picture of your health.", "Exploring contactless sensing of movement and presence in the room."],
-  ["12k+", "Thermal"],
-  ["Personalized health protocols generated for our global members.", "Using a thermal array to explore patterns in room activity."],
-  ["98%", "Wi-Fi CSI"],
-  ["Average improvement in sleep quality and nightly recovery scores.", "Sampling channel changes between a separate transmit node and the ESP32-S3 receiver on the bench."],
-  ["24/7", "Care"],
-  ["Continuous monitoring to catch health changes before they happen.", "Keeping assessment and response in the hands of the care team."],
-]);
-
-const impactDetails = new Map([
-  ["Radar", ["60 GHz", "room-level sensing"]],
-  ["Thermal", ["32 × 24", "thermal array"]],
-  ["Wi-Fi CSI", ["C6 → S3", "bench sensing link"]],
-  ["Care", ["Human review", "care team judgment"]],
 ]);
 
 const approachCopy = new Map([
@@ -137,23 +111,6 @@ function labelRoomConcept(root, image) {
   frame.append(label);
 }
 
-function addImpactDetails(root, section) {
-  section?.querySelectorAll('[data-framer-name="Title"] p').forEach((heading) => {
-    const content = impactDetails.get(heading.textContent.trim());
-    const card = heading.closest('[data-framer-name="Desktop"],[data-framer-name="Tablet"],[data-framer-name="Mobile"]');
-    if (!content || !card || card.querySelector('[data-syren-impact-detail]')) return;
-    card.dataset.syrenImpactCard = "true";
-    const detail = root.createElement("div");
-    detail.dataset.syrenImpactDetail = "true";
-    const value = root.createElement("strong");
-    const description = root.createElement("span");
-    value.textContent = content[0];
-    description.textContent = content[1];
-    detail.append(value, description);
-    card.querySelector('[data-framer-name="Description"]')?.before(detail);
-  });
-}
-
 function replaceCopy(root, copy) {
   root?.querySelectorAll("h1,h2,h3,h4,p").forEach((element) => {
     const replacement = copy.get(element.textContent.trim());
@@ -188,10 +145,11 @@ export function applyScopedHomeContent(root) {
   addHeroShowcase(root, hero);
   hero.querySelectorAll("a[href]").forEach((anchor) => {
     const original = anchor.querySelector("p")?.textContent.trim();
-    const label = original === "Request Access" ? "See how it works" : original === "Book a Demo" ? "Get in Touch" : null;
+    const label = original === "Request Access" ? "Try the demo" : original === "Book a Demo" ? "Get in Touch" : null;
     if (!label) return;
     anchor.querySelectorAll("p").forEach((p) => { p.textContent = label; });
-    anchor.setAttribute("href", original === "Request Access" ? "/#how-it-works" : "/contact");
+    anchor.setAttribute("href", original === "Request Access" ? "/#care-experience" : "/contact");
+    if (original === "Request Access") anchor.dataset.syrenDemoTrigger = "true";
     anchor.removeAttribute("target");
   });
   const stats = hero.querySelector('[data-framer-name="Hero stats"]');
@@ -201,23 +159,7 @@ export function applyScopedHomeContent(root) {
     replaceIcon(svg, text.includes("Contactless sensing") ? "sensing" : text.includes("No wearable needed") ? "wearable" : "care");
   });
 
-  const impact = root.querySelector('section[data-framer-name="Impact Section"]');
-  replaceCopy(impact, impactCopy);
-  addImpactDetails(root, impact);
-  const oldRating = impact?.querySelector('[data-framer-name="Stars"]');
-  if (oldRating) {
-    oldRating.replaceChildren("Development goal");
-    oldRating.dataset.syrenPurposeLabel = "true";
-  }
-  // Preserve the original emphasis nodes and all motion hooks in the purpose card.
-  const purpose = [...(impact?.querySelectorAll("p") || [])]
-    .find((p) => p.textContent.includes("has completely changed how I track"));
-  if (purpose) {
-    purpose.querySelector("strong").textContent = "Syren Health";
-    [...purpose.childNodes].filter((node) => node.nodeType === 3 && node.textContent.trim())
-      .forEach((node) => { node.textContent = "is being developed to support more informed overnight care."; });
-  }
-
+  applyCareExperience(root);
   applyHowItWorks(root);
   applyTechnicalProof(root);
   applyProgressSection(root);
@@ -261,5 +203,8 @@ export function applyScopedHomeContent(root) {
   const faq = root.querySelector("#faq");
   const engineering = root.querySelector("#engineering");
   const progress = root.querySelector('#testimonials[data-syren-progress="true"]');
-  if (faq && impact && engineering && progress) faq.before(features, impact, progress, engineering);
+  if (faq && engineering && progress) faq.before(features, progress, engineering);
+  const experience = root.querySelector("#care-experience");
+  const how = root.querySelector("#how-it-works");
+  if (experience && how) how.before(experience);
 }

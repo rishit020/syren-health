@@ -20,7 +20,7 @@ npm run preview -- --port 4173
 
 ## Current website
 
-- `/`: hero, how it works, approach, features/device, purpose, progress, engineering proof, FAQ and footer.
+- `/`: hero, interactive care examples, how it works, approach, features/device, progress, engineering proof, FAQ and footer.
 - `/contact`: Syren inquiry form that submits directly through FormSubmit to **rishit020@gmail.com**. FormSubmit was activated and an actual website submission was verified in Gmail (it initially landed in Spam). No email app is required.
 - `/404` and unknown paths: branded not-found page.
 
@@ -37,17 +37,20 @@ npm run test:site
 npm run test:progress
 npm run test:content
 npm run test:demo
+npm run test:walkthrough
 ```
 
 `test:site` checks desktop, laptop, tablet and mobile; active routes, links and anchors, mobile menu, every FAQ, images, overflow, runtime errors, reduced motion and direct form submission states (with intercepted provider responses). Automated tests intercept the provider; they send no emails or production submissions. Screenshots and reports live in `reference/validation/final-syren/`.
 
 `test:demo` checks the synthetic dashboard's resident selection, simulated vitals, local-only clearing, history and reset, plus every sensor walkthrough entry point and control on desktop and mobile.
 
+`test:walkthrough` exercises all three care scenarios, their matching dashboard records, keyboard tabs, footer destinations, the primary demo action, mobile detail visibility, modal focus containment, resizing and browser-back behavior.
+
 Older scripts and comparison reports document the original Luvia reconstruction phase and are historical, not current Syren acceptance checks.
 
 ## Implementation and assets
 
-`src/App.jsx` supplies routing and responsive template selection. `src/home-content.js` adapts the homepage; `src/home-visuals.css` styles its native bench diagram and visual labels; `src/visual-refresh.css` supplies the shared homepage visual treatment and hero dashboard preview. `src/site-chrome.js` owns shared navigation, FAQ and footer; `src/contact-content.js` adapts the contact form. `src/controllers.js` handles interactions and motion. Native progress visuals are in `src/progress-section.*`; the engineering section is in `src/technical-proof.*`; photographic and dashboard cards are in `src/how-it-works.*`.
+`src/App.jsx` supplies routing and responsive template selection. `src/home-content.js` adapts the homepage; `src/care-experience.*` supplies the interactive care examples; `src/home-visuals.css` styles the native bench diagram and visual labels; `src/visual-refresh.css` supplies the shared homepage visual treatment and hero dashboard preview. `src/site-chrome.js` owns shared navigation, FAQ and footer; `src/contact-content.js` adapts the contact form. `src/controllers.js` handles interactions and motion. Native progress visuals are in `src/progress-section.*`; the engineering section is in `src/technical-proof.*`; photographic and dashboard cards are in `src/how-it-works.*`.
 
 All media and fonts are served locally. The room photograph is an illustrative concept with an on-image label. The device feature uses a native diagram of the current single-room bench topology. The two `clinic-overview-*.png` assets are captures of the actual clinic dashboard UI running on its synthetic mock client, not photographs, live patient data or proof of integrated hardware. The product is described as a prototype; there are no customer testimonials or validated performance statistics. See `docs/TECHNICAL_CLAIMS.md` for source and status of public technical claims.
 

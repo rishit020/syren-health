@@ -17,6 +17,7 @@
     "test:progress": "node scripts/check-progress-section.mjs",
     "test:site": "node scripts/check-final-site.mjs",
     "test:demo": "node scripts/check-interactive-demos.mjs",
+    "test:walkthrough": "node scripts/check-site-walkthrough.mjs",
     "test:contact": "node scripts/check-contact-delivery.mjs"
   },
   "dependencies": {

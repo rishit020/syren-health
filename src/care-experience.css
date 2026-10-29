@@ -1,0 +1,43 @@
+#care-experience[data-syren-care-experience] { display: block !important; width: 100% !important; height: auto !important; min-height: 0 !important; padding: clamp(70px, 7vw, 112px) 24px !important; background: #fffaf3; color: #29231d; scroll-margin-top: 90px; }
+#care-experience * { box-sizing: border-box; }
+#care-experience .syren-care__inner { width: min(100%, 1200px); margin: 0 auto; }
+#care-experience .syren-care__heading { display: grid; grid-template-columns: 1.25fr .75fr; align-items: end; gap: 60px; margin-bottom: 34px; }
+#care-experience .syren-care__eyebrow { color: #9c482e; font: 650 11px/1.2 Inter, sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+#care-experience h2 { margin: 17px 0 0; font: 650 clamp(34px, 4.1vw, 58px)/1.05 Inter, sans-serif; letter-spacing: -.052em; }
+#care-experience .syren-care__heading > p { margin: 0 0 3px; color: #6b6258; font: 400 16px/1.6 Inter, sans-serif; }
+#care-experience .syren-care__tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-bottom: 14px; }
+#care-experience .syren-care__tabs button { display: flex; align-items: center; gap: 12px; min-height: 60px; padding: 13px 18px; border: 1px solid #dfd2c3; border-radius: 12px; background: #fffaf3; color: #74675a; text-align: left; font: 550 14px/1.3 Inter, sans-serif; cursor: pointer; transition: background-color 180ms ease, color 180ms ease; }
+#care-experience .syren-care__tabs button > span { color: #80634e; font-size: 11px; }
+#care-experience .syren-care__tabs button[aria-selected="true"] { border-color: #a44b2d; background: #a44b2d; color: #fffaf4; }
+#care-experience .syren-care__tabs button[aria-selected="true"] > span { color: #fff4ea; }
+#care-experience .syren-care__tabs button:hover:not([aria-selected="true"]) { background: #f3ecdf; color: #3b2b20; }
+#care-experience button:focus-visible { outline: 3px solid #99462b; outline-offset: 4px; }
+#care-experience .syren-care__panel { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(26px, 4vw, 60px); align-items: center; padding: clamp(24px, 4vw, 48px); border: 1px solid #e3d5c4; border-radius: 24px; background: radial-gradient(ellipse at 5% 100%, #e8d4bf77, transparent 55%), #f4ecdf; }
+#care-experience .syren-care__index { display: block; color: #8b5f45; font: 600 10px/1.4 Inter, sans-serif; letter-spacing: .09em; text-transform: uppercase; }
+#care-experience .syren-care__story h3 { margin: 15px 0; max-width: 370px; font: 500 clamp(29px, 3.1vw, 43px)/1.08 Domine, Georgia, serif; letter-spacing: -.045em; }
+#care-experience .syren-care__story > p { margin: 0; color: #6b5f53; font: 400 16px/1.6 Inter, sans-serif; }
+#care-experience .syren-care__action { display: inline-flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 48px; margin-top: 28px; padding: 13px 18px; border: 1px solid #a34a2c; border-radius: 999px; background: #a34a2c; color: #fffaf3; font: 600 13px/1.3 Inter, sans-serif; cursor: pointer; transition: background-color 180ms ease; }
+#care-experience .syren-care__action:hover { background: #833a22; }
+#care-experience .syren-care__disclosure { display: block; margin-top: 13px; color: #6f5e4f; font: 400 11px/1.4 Inter, sans-serif; }
+#care-experience .syren-care__preview { min-width: 0; overflow: hidden; border: 1px solid #d9cdc0; border-radius: 16px; background: #fffdfa; box-shadow: 0 14px 40px #63452912; }
+#care-experience .syren-care__preview-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 17px 20px; border-bottom: 1px solid #e9e0d5; color: #6f6256; font: 600 11px/1.3 Inter, sans-serif; }
+#care-experience .syren-care__signal { padding: 21px 20px 13px; }
+#care-experience .syren-care__state { display: inline-flex; align-items: center; gap: 7px; color: #a0462c; font: 600 11px/1.3 Inter, sans-serif; }
+#care-experience .syren-care__state i { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+#care-experience .syren-care__signal svg { display: block; width: 100%; height: 85px; margin-top: 6px; overflow: visible; }
+#care-experience .syren-care__baseline { fill: none; stroke: #eee4d7; stroke-width: 1; stroke-dasharray: 3 4; }
+#care-experience .syren-care__trace { fill: none; stroke: #b25533; stroke-width: 2.2; vector-effect: non-scaling-stroke; }
+#care-experience .syren-care__missing { fill: none; stroke: #b8afa6; stroke-width: 1.5; stroke-dasharray: 4 5; }
+#care-experience [data-care-tone="limited"] .syren-care__state { color: #926019; }
+#care-experience [data-care-tone="limited"] .syren-care__trace { stroke: #b88a4d; }
+#care-experience [data-care-tone="unavailable"] .syren-care__state { color: #6f6a63; }
+#care-experience [data-care-tone="unavailable"] .syren-care__trace { stroke: #9f978d; }
+#care-experience .syren-care__signal-caption { color: #746252; font: 400 10px/1.4 Inter, sans-serif; }
+#care-experience .syren-care__event { padding: 0 20px 22px; }
+#care-experience .syren-care__event h4 { margin: 8px 0 15px; font: 650 17px/1.3 Inter, sans-serif; letter-spacing: -.02em; }
+#care-experience .syren-care__event ol { padding: 0; margin: 0; list-style: none; }
+#care-experience .syren-care__event li { display: flex; align-items: center; gap: 12px; padding: 11px 0; border-top: 1px solid #eee5da; color: #655b51; font: 400 12px/1.4 Inter, sans-serif; }
+#care-experience .syren-care__event li > span { flex: 0 0 20px; color: #80634e; font-size: 10px; }
+#care-experience .syren-care__event > p { margin: 15px 0 0; color: #726050; font: 400 11px/1.5 Inter, sans-serif; }
+@media (max-width: 900px) { #care-experience .syren-care__heading { grid-template-columns: 1fr; gap: 20px; } #care-experience .syren-care__heading > p { max-width: 650px; } #care-experience .syren-care__panel { grid-template-columns: 1fr; gap: 28px; } #care-experience .syren-care__story h3 { max-width: none; } }
+@media (max-width: 520px) { #care-experience[data-syren-care-experience] { padding: 64px 16px !important; } #care-experience .syren-care__tabs { gap: 5px; } #care-experience .syren-care__tabs button { flex-direction: column; align-items: flex-start; gap: 7px; padding: 12px 10px; font-size: 12px; } #care-experience .syren-care__panel { padding: 22px 16px; border-radius: 18px; } #care-experience .syren-care__story > p { font-size: 15px; } #care-experience .syren-care__preview-top, #care-experience .syren-care__signal { padding-left: 15px; padding-right: 15px; } #care-experience .syren-care__event { padding-left: 15px; padding-right: 15px; } }

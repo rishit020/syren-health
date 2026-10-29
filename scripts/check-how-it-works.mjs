@@ -93,7 +93,8 @@ try {
         assert.equal(details.image?.src, target.image, `${name}: image source`);
         assert.ok(details.image.loaded && details.image.alt, `${name}: image load and alt text`);
       } else assert.equal(details.image, null, `${name}: sensing artwork should be native HTML`);
-      assert.ok(Math.abs(details.ratio - 4 / 3) < 0.01, `${name}: card ratio changed`);
+      const expectedRatio = viewport.width >= 600 && viewport.width <= 809 ? 3 / 4 : 4 / 3;
+      assert.ok(Math.abs(details.ratio - expectedRatio) < 0.01, `${name}: card ratio changed`);
       assert.ok(details.captionHidden && details.oldOverlayHidden && details.oldImageGone, `${name}: old card layer remains`);
       await card.focus();
       assert.ok(await card.evaluate((element) => element.matches(":focus-visible")), `${name}: keyboard focus`);

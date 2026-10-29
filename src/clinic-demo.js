@@ -94,6 +94,15 @@ function render() {
   dialog.querySelector(".syren-demo__nav").innerHTML = views.map(({ id, label }) => `<button type="button" class="${view === id ? "is-active" : ""}" data-demo-view="${id}" aria-current="${view === id ? "page" : "false"}">${label}</button>`).join("");
   dialog.querySelector(".syren-demo__main").innerHTML = view === "events" ? eventsContent() : view === "vitals" ? vitalsContent() : view === "devices" ? devicesContent() : view === "history" ? historyContent() : overviewContent();
 }
+function focusDetail() {
+  const heading = dialog.querySelector(".syren-demo__detail h3");
+  heading?.focus();
+  if (window.innerWidth <= 780 && heading) {
+    const panel = heading.closest(".syren-demo__detail");
+    panel.style.scrollMarginTop = `${dialog.querySelector(".syren-demo__topbar").getBoundingClientRect().height + 16}px`;
+    panel.scrollIntoView({ block: "start" });
+  }
+}
 function createDialog() {
   dialog = document.createElement("dialog");
   dialog.className = "syren-demo";
@@ -106,17 +115,26 @@ function createDialog() {
     const nextView = event.target.closest("[data-demo-view]");
     if (nextView) { view = nextView.dataset.demoView; render(); dialog.querySelector(`[data-demo-view="${view}"]`)?.focus(); return; }
     const clear = event.target.closest("[data-demo-clear]");
-    if (clear) { const index = Number(clear.dataset.demoClear); const item = itemFor(index); if (item && !item.cleared) { item.cleared = true; history.unshift({ title: item.title, resident: residents[index].name }); render(); dialog.querySelector(".syren-demo__announcement").textContent = `${residents[index].name} demo item cleared.`; dialog.querySelector(".syren-demo__detail h3")?.focus(); } return; }
+    if (clear) { const index = Number(clear.dataset.demoClear); const item = itemFor(index); if (item && !item.cleared) { item.cleared = true; history.unshift({ title: item.title, resident: residents[index].name }); render(); dialog.querySelector(".syren-demo__announcement").textContent = `${residents[index].name} demo item cleared.`; focusDetail(); } return; }
     const record = event.target.closest("[data-demo-resident]");
-    if (record) { selected = Number(record.dataset.demoResident); render(); dialog.querySelector(`[data-demo-resident="${selected}"]`)?.focus(); }
+    if (record) { selected = Number(record.dataset.demoResident); render(); if (window.innerWidth <= 780) focusDetail(); else dialog.querySelector(`[data-demo-resident="${selected}"]`)?.focus(); }
   });
-  dialog.addEventListener("close", () => opener?.focus());
+  // Native dialog restores a connected opener. Only supply a fallback when a
+  // responsive page replacement removed it; re-focusing later steals focus
+  // from a user's next keyboard action.
+  dialog.addEventListener("close", () => {
+    const focus = document.activeElement;
+    if (!opener?.isConnected && (focus === document.body || focus === document.documentElement || dialog.contains(focus))) document.querySelector(".syren-hero-showcase")?.focus();
+  });
+  window.addEventListener("popstate", () => { if (dialog.open) dialog.close(); });
   document.body.append(dialog);
 }
-export function openClinicDemo(trigger) {
+export function openClinicDemo(trigger, initial = {}) {
   if (!dialog) createDialog();
   opener = trigger;
-  view = "overview";
+  view = views.some((entry) => entry.id === initial.view) ? initial.view : "overview";
+  const index = Number(initial.resident);
+  selected = initial.resident !== undefined && Number.isInteger(index) && residents[index] ? index : 1;
   render();
   dialog.showModal();
   dialog.querySelector("[data-demo-close]")?.focus();

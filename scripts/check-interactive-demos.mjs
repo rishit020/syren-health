@@ -10,7 +10,7 @@ try {
     page.on("pageerror", (error) => errors.push(error.message));
     await page.goto(base);
     await page.waitForSelector(".syren-hero-showcase");
-    const order = await page.evaluate(() => ["top", "how-it-works", "approach", "features", "testimonials", "engineering", "faq"].map((id) => document.getElementById(id).getBoundingClientRect().top + scrollY));
+    const order = await page.evaluate(() => ["top", "care-experience", "how-it-works", "approach", "features", "testimonials", "engineering", "faq"].map((id) => document.getElementById(id).getBoundingClientRect().top + scrollY));
     assert.ok(order.every((position, index) => index === 0 || position > order[index - 1]), `${name}: technical sections should come after care sections`);
     const trigger = page.locator(".syren-hero-showcase");
     await trigger.click();

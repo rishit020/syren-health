@@ -16,7 +16,7 @@
 .syren-demo button { font: inherit; }
 .syren-demo button:focus-visible { outline: 3px solid #2563eb; outline-offset: -3px; }
 .syren-demo__shell { display: flex; min-height: 550px; flex-direction: column; }
-.syren-demo__topbar { display: flex; min-height: 70px; align-items: center; gap: 16px; padding: 12px 24px; border-bottom: 1px solid #e5e5e5; }
+.syren-demo__topbar { position: sticky; top: 0; z-index: 5; display: flex; min-height: 70px; align-items: center; gap: 16px; padding: 12px 24px; border-bottom: 1px solid #e5e5e5; background: #fff; }
 .syren-demo__brand { display: flex; align-items: center; gap: 11px; margin-right: auto; }
 .syren-demo__brand-icon { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 9px; background: #2563eb; color: white; font-size: 24px; }
 .syren-demo__brand strong, .syren-demo__brand small { display: block; }
@@ -62,7 +62,7 @@
 .syren-demo__status--high i { background: #dc2626; }
 .syren-demo__status--watch i { background: #d97706; }
 .syren-demo__detail { align-self: start; padding: 18px; border: 1px solid #e5e5e5; border-radius: 12px; }
-.syren-demo__detail h3 { margin: 7px 0 0; font-size: 22px; font-weight: 650; }
+.syren-demo__detail h3 { margin: 7px 0 0; font-size: 22px; font-weight: 650; scroll-margin-top: 110px; }
 .syren-demo__detail-room { margin: 2px 0 18px; color: #737373; font-size: 12px; }
 .syren-demo__detail dl { margin: 0; }
 .syren-demo__detail dl div { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-top: 1px solid #e5e5e5; font-size: 11px; }
@@ -96,7 +96,7 @@
   .syren-demo__topbar { padding: 10px 14px; }
   .syren-demo__demo-label { max-width: 105px; line-height: 1.25; }
   .syren-demo__body { display: block; }
-  .syren-demo__nav { position: sticky; top: 0; z-index: 2; flex-direction: row; overflow-x: auto; padding: 6px 10px; border-right: 0; border-bottom: 1px solid #e5e5e5; background: #fff; }
+  .syren-demo__nav { flex-direction: row; overflow-x: auto; padding: 6px 10px; border-right: 0; border-bottom: 1px solid #e5e5e5; background: #fff; }
   .syren-demo__nav button { flex: 1 0 auto; text-align: center; }
   .syren-demo__main { padding: 22px 18px; }
   .syren-demo__heading h2 { font-size: 26px; }
@@ -119,4 +119,11 @@
   .syren-demo__row-end { display: none; }
   .syren-demo__section-head > span { display: none; }
   .syren-demo__trend { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 360px) {
+  .syren-demo__topbar { gap: 6px; padding-inline: 10px; }
+  .syren-demo__brand { gap: 6px; }
+  .syren-demo__brand-icon { width: 26px; height: 26px; }
+  .syren-demo__reset { padding-inline: 8px; }
 }

@@ -284,6 +284,13 @@
   outline-offset: 4px;
 }
 
+@media (min-width: 600px) and (max-width: 809px) {
+  #how-it-works [data-syren-how-card="true"] .framer-1yxk61a-container,
+  #how-it-works [data-syren-how-card="true"] .framer-1yxk61a-container > div {
+    aspect-ratio: 4 / 3;
+  }
+}
+
 @media (hover: hover) and (pointer: fine) {
   #how-it-works [data-syren-how-card="true"]:hover {
     transform: translateY(-3px);

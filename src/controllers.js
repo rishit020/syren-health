@@ -1,6 +1,7 @@
 import { submitContact } from "./contact-delivery.js";
 import { openClinicDemo } from "./clinic-demo.js";
 import { openSensorDemo } from "./sensor-demo.js";
+import { handleCareExperienceClick, handleCareExperienceKeyDown } from "./care-experience.js";
 import revealTiming from "../reference/reveal-timing.json";
 import scrollReveals from "../reference/reveal-selectors.json";
 
@@ -515,13 +516,33 @@ export function installAboutTicker(scope, route) {
   };
 }
 
+function installMediaMotionPreferences(scope) {
+  const preference = matchMedia("(prefers-reduced-motion: reduce)");
+  const videos = [...scope.querySelectorAll("video")].map((video) => ({ video, autoplay: video.autoplay }));
+  const sync = () => videos.forEach(({ video, autoplay }) => {
+    video.autoplay = autoplay && !preference.matches;
+    if (preference.matches) video.pause();
+    else if (autoplay) video.play().catch(() => {});
+  });
+  const preventReducedPlayback = (event) => { if (preference.matches) event.target.pause(); };
+  videos.forEach(({ video }) => video.addEventListener("play", preventReducedPlayback));
+  preference.addEventListener("change", sync);
+  sync();
+  return () => {
+    preference.removeEventListener("change", sync);
+    videos.forEach(({ video, autoplay }) => { video.removeEventListener("play", preventReducedPlayback); video.autoplay = autoplay; });
+  };
+}
+
 export function installReferenceMotion(scope, route) {
   const cleanProgressMotion = installProgressSectionMotion(scope, route);
+  const cleanMediaMotion = installMediaMotionPreferences(scope);
+  const cleanup = () => { cleanProgressMotion(); cleanMediaMotion(); };
   if (route !== "/" || matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    return cleanProgressMotion;
+    return cleanup;
   }
   const artwork = scope.querySelector('[data-framer-appear-id="1dbzf36"]');
-  if (!artwork) return cleanProgressMotion;
+  if (!artwork) return cleanup;
   // Framer's source config uses an over-damped spring (mass 1, stiffness 120,
   // damping 60). Sampling the physical response keeps the original slow settle
   // without shipping Framer's runtime.
@@ -550,7 +571,7 @@ export function installReferenceMotion(scope, route) {
   });
   return () => {
     animation.cancel();
-    cleanProgressMotion();
+    cleanup();
   };
 }
 
@@ -705,6 +726,7 @@ export function installScrollRevealMotion(scope, route, variant) {
 
 export function createInteractionHandlers({ route, templates, navigate }) {
   function onClick(event) {
+    if (handleCareExperienceClick(event)) return;
     const sensorTrigger = event.target.closest('[data-syren-sensor-demo],a[data-syren-how-step="2"]');
     if (sensorTrigger && event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
       event.preventDefault();
@@ -714,7 +736,10 @@ export function createInteractionHandlers({ route, templates, navigate }) {
     const demoTrigger = event.target.closest('[data-syren-demo-trigger],a[data-syren-how-step="3"]');
     if (demoTrigger && event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
       event.preventDefault();
-      openClinicDemo(demoTrigger);
+      openClinicDemo(demoTrigger, {
+        resident: demoTrigger.dataset.demoInitialResident,
+        view: demoTrigger.dataset.demoInitialView,
+      });
       return;
     }
     const anchor = event.target.closest("a[href]");
@@ -775,6 +800,7 @@ export function createInteractionHandlers({ route, templates, navigate }) {
   }
 
   function onKeyDown(event) {
+    if (handleCareExperienceKeyDown(event)) return;
     if (!["Enter", " "].includes(event.key)) return;
     const menuToggle = event.target.closest('nav div[tabindex="0"]');
     if (menuToggle) {
