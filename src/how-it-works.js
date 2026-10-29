@@ -19,7 +19,7 @@ const steps = [
     number: "3",
     label: "Caregiver review",
     title: "An actual dashboard UI.",
-    description: "Current clinic interface with synthetic records.",
+    description: "Explore an interactive preview with synthetic records.",
     href: "/#engineering",
   },
 ];
@@ -48,7 +48,7 @@ const cardVisuals = [
     <h3>A real clinic<br>dashboard.</h3>
     <p class="syren-how-visual__lead">Care-team overview, attention queue and monitoring status.</p>
     <div class="syren-how-visual__screen"><div class="syren-how-visual__screen-bar"><span></span><span></span><span></span><strong>Clinic overview · Demo</strong></div><img src="/syren/clinic-overview-card.png" width="900" height="1200" alt="Actual Syren clinic overview interface with synthetic resident records, an attention queue and monitoring coverage." loading="lazy" decoding="async" /></div>
-    <div class="syren-how-visual__foot"><span>Synthetic records only</span><span class="syren-how-visual__arrow" aria-hidden="true">↗</span></div>
+    <div class="syren-how-visual__foot"><span>Explore demo · synthetic data</span><span class="syren-how-visual__arrow" aria-hidden="true">↗</span></div>
   </div>`,
 ];
 

@@ -1,4 +1,5 @@
 import { submitContact } from "./contact-delivery.js";
+import { openClinicDemo } from "./clinic-demo.js";
 import revealTiming from "../reference/reveal-timing.json";
 import scrollReveals from "../reference/reveal-selectors.json";
 
@@ -320,7 +321,9 @@ function hoverTarget(target, templates) {
   const anchor = target.closest("a[href]");
   if (!anchor) return null;
   const href = anchor.getAttribute("href")?.split("#")[0];
-  if (anchor.dataset.syrenHowCard === "true") return [anchor, templates.hoverStory];
+  // These cards contain custom markup. Applying the captured Framer hover
+  // variant copies classes by child index and destroys their layout.
+  if (anchor.dataset.syrenHowCard === "true") return null;
   if (anchor.closest("nav") && anchor.dataset.syrenNavLink) return [anchor, templates.hoverNav];
   if (anchor.closest("nav") && anchor.dataset.syrenCta) return [anchor, templates.hoverPrimary];
   if (anchor.closest("nav") && href === "/about") return [anchor, templates.hoverNav];
@@ -701,6 +704,12 @@ export function installScrollRevealMotion(scope, route, variant) {
 
 export function createInteractionHandlers({ route, templates, navigate }) {
   function onClick(event) {
+    const demoTrigger = event.target.closest('[data-syren-demo-trigger],a[data-syren-how-step="3"]');
+    if (demoTrigger && event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
+      event.preventDefault();
+      openClinicDemo(demoTrigger);
+      return;
+    }
     const anchor = event.target.closest("a[href]");
     if (anchor) {
       const href = anchor.getAttribute("href");

@@ -57,7 +57,7 @@ const markup = `
         <div><span class="syren-engineering__eyebrow">Product interface</span><h3>The dashboard is real software.</h3></div>
         <p>Captured from the current clinic app. It uses synthetic demo records while hardware-to-product integration remains in development.</p>
       </figcaption>
-      <div class="syren-engineering__screen"><img src="/syren/clinic-overview-wide.png" width="1440" height="1050" loading="lazy" decoding="async" alt="Actual Syren clinic overview screenshot with synthetic demo records, an attention queue, monitoring coverage and device health." /></div>
+      <button type="button" class="syren-engineering__screen" data-syren-demo-trigger aria-label="Open interactive clinic dashboard demo"><img src="/syren/clinic-overview-wide.png" width="1440" height="1050" loading="lazy" decoding="async" alt="Actual Syren clinic overview screenshot with synthetic demo records, an attention queue, monitoring coverage and device health." /><span class="syren-engineering__screen-action">Explore interactive demo <span aria-hidden="true">↗</span></span></button>
       <p class="syren-engineering__disclosure">Actual interface screenshot · synthetic data · not a live clinical deployment</p>
     </figure>
   </div>

@@ -31,8 +31,8 @@ const expected = [
     visual: "dashboard",
     href: "/#engineering",
     title: "An actual dashboard UI.",
-    description: "Current clinic interface with synthetic records.",
-    visible: ["Current UI", "A real clinic", "Synthetic records only"],
+    description: "Explore an interactive preview with synthetic records.",
+    visible: ["Current UI", "A real clinic", "Explore demo · synthetic data"],
     image: "/syren/clinic-overview-card.png",
   },
 ];
@@ -53,6 +53,7 @@ try {
     await section.waitFor();
     const cards = section.locator('a[data-syren-how-card="true"]');
     assert.equal(await cards.count(), 3, `${name}: expected three cards`);
+    if (name === "desktop1440" || name === "laptop1280") await page.waitForTimeout(800);
 
     for (const [index, target] of expected.entries()) {
       const card = cards.nth(index);
@@ -90,6 +91,28 @@ try {
       assert.ok(details.captionHidden && details.oldOverlayHidden && details.oldImageGone, `${name}: old card layer remains`);
       await card.focus();
       assert.ok(await card.evaluate((element) => element.matches(":focus-visible")), `${name}: keyboard focus`);
+      if (name === "desktop1440" || name === "laptop1280") {
+        await card.hover();
+        const hovered = await card.evaluate((element) => {
+          const panel = element.querySelector("[data-syren-how-visual]");
+          const cardBounds = element.getBoundingClientRect();
+          const panelBounds = panel.getBoundingClientRect();
+          return {
+            visual: panel.dataset.syrenHowVisual,
+            className: panel.className,
+            background: getComputedStyle(panel).backgroundColor,
+            width: panelBounds.width,
+            cardWidth: cardBounds.width,
+            scrollWidth: panel.scrollWidth,
+            clientWidth: panel.clientWidth,
+          };
+        });
+        assert.equal(hovered.visual, target.visual, `${name}: hover changed card ${index + 1} visual`);
+        assert.ok(hovered.className.includes(`syren-how-visual--${target.visual}`), `${name}: hover stripped card ${index + 1} styling`);
+        assert.ok(Math.abs(hovered.width - hovered.cardWidth) < 2, `${name}: hover changed card ${index + 1} size`);
+        assert.ok(hovered.scrollWidth <= hovered.clientWidth + 1, `${name}: hover caused card ${index + 1} overflow`);
+        assert.notEqual(hovered.background, "rgba(0, 0, 0, 0)", `${name}: hover removed card ${index + 1} background`);
+      }
     }
 
     assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), `${name}: horizontal overflow`);
@@ -107,10 +130,42 @@ try {
     await card.focus();
     await card.press("Enter");
     await page.waitForTimeout(150);
-    assert.equal(new URL(page.url()).hash, new URL(target.href, base).hash, `card ${index + 1} keyboard destination`);
-    report.keyboard.push({ card: index + 1, destination: target.href });
+    if (index === 2) {
+      const demo = page.locator("dialog.syren-demo");
+      assert.ok(await demo.isVisible(), "dashboard card opens interactive dialog from keyboard");
+      assert.ok((await demo.innerText()).includes("synthetic data"), "demo discloses synthetic data");
+      await demo.locator('[data-demo-view="events"]').click();
+      assert.ok((await demo.innerText()).includes("Attention queue"), "events view opens");
+      await demo.locator('[data-demo-resident="3"]').click();
+      assert.ok((await demo.locator(".syren-demo__detail").innerText()).includes("Resident D"), "event selection opens detail");
+      await demo.locator('[data-demo-view="devices"]').click();
+      assert.ok((await demo.innerText()).includes("Room devices"), "devices view opens");
+      await page.keyboard.press("Escape");
+      assert.ok(!(await demo.isVisible()), "Escape closes demo");
+      assert.ok(await card.evaluate((element) => element === document.activeElement), "focus returns to dashboard card");
+      report.keyboard.push({ card: 3, destination: "interactive demo" });
+    } else {
+      assert.equal(new URL(page.url()).hash, new URL(target.href, base).hash, `card ${index + 1} keyboard destination`);
+      report.keyboard.push({ card: index + 1, destination: target.href });
+    }
     await page.close();
   }
+
+  const engineering = await browser.newPage({ viewport: viewports.desktop1440 });
+  await engineering.goto(`${base}/#engineering`);
+  await engineering.locator("[data-syren-demo-trigger]").click();
+  assert.ok(await engineering.locator("dialog.syren-demo").isVisible(), "engineering screenshot opens demo");
+  await engineering.locator("dialog.syren-demo").screenshot({ path: `${output}/desktop-demo.png`, animations: "disabled" });
+  await engineering.close();
+
+  const mobileDemo = await browser.newPage({ viewport: viewports.mobile390 });
+  await mobileDemo.goto(base);
+  await mobileDemo.locator('#how-it-works a[data-syren-how-step="3"]').click();
+  const mobileDialog = mobileDemo.locator("dialog.syren-demo");
+  assert.ok(await mobileDialog.isVisible(), "mobile dashboard card opens demo");
+  assert.ok(await mobileDialog.evaluate((element) => element.scrollWidth <= element.clientWidth + 1), "mobile dialog has no horizontal overflow");
+  await mobileDialog.screenshot({ path: `${output}/mobile-demo.png`, animations: "disabled" });
+  await mobileDemo.close();
 
   const reduced = await browser.newPage({ viewport: viewports.desktop1440, reducedMotion: "reduce" });
   await reduced.goto(base);
