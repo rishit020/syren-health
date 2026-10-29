@@ -257,4 +257,9 @@ export function applyScopedHomeContent(root) {
     picture.style.scrollMarginTop = "110px";
     renderBenchVisual(root, picture);
   }
+  // Lead with care and the interactive product preview; keep detailed
+  // prototype specifications together near the end of the page.
+  const faq = root.querySelector("#faq");
+  const engineering = root.querySelector("#engineering");
+  if (faq && impact && engineering) faq.before(features, impact, engineering);
 }

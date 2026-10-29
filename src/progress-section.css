@@ -449,6 +449,10 @@
   content: "";
 }
 
+#testimonials .syren-progress__sensor-link { align-self: flex-start; min-height: 44px; margin-top: 8px; padding: 8px 0; border: 0; background: transparent; color: #a0462a; font: 600 12px/1.3 Inter, sans-serif; cursor: pointer; text-align: left; }
+#testimonials .syren-progress__sensor-link:hover { color: #682c1a; }
+#testimonials .syren-progress__sensor-link:focus-visible { outline: 2px solid #a0462a; outline-offset: 3px; }
+
 #testimonials .syren-progress__card-link {
   width: 100%;
   justify-content: space-between;

@@ -42,6 +42,7 @@ const progressMarkup = `
           <h3>The sensing prototype.</h3>
           <p>Radar, thermal and Wi-Fi CSI are captured in one local engineering setup.</p>
           <span class="syren-progress__status">Bench-tested</span>
+          <button type="button" class="syren-progress__sensor-link" data-syren-sensor-demo="radar">See how the sensors work <span aria-hidden="true">↗</span></button>
         </div>
       </article>
 

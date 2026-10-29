@@ -16,18 +16,21 @@ const markup = `
         <p class="syren-engineering__spec">60 GHz <span>mmWave</span></p>
         <h3>Radar</h3>
         <p>MR60BHA2 motion and range outputs, plus experimental heart and breathing estimates when signal conditions support them.</p>
+        <button type="button" class="syren-engineering__explore" data-syren-sensor-demo="radar">See radar in motion <span aria-hidden="true">↗</span></button>
       </article>
       <article>
         <div class="syren-engineering__modality-top"><span class="syren-engineering__modality-number">02</span><span class="syren-engineering__pixels" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
         <p class="syren-engineering__spec">32 × 24 <span>array</span></p>
         <h3>Thermal</h3>
         <p>MLX90640 low-resolution heat patterns add warm-region and position context. Surface temperature is not core temperature.</p>
+        <button type="button" class="syren-engineering__explore" data-syren-sensor-demo="thermal">Explore thermal sensing <span aria-hidden="true">↗</span></button>
       </article>
       <article>
         <div class="syren-engineering__modality-top"><span class="syren-engineering__modality-number">03</span><span class="syren-engineering__waves" aria-hidden="true">≋</span></div>
         <p class="syren-engineering__spec">Wi-Fi <span>CSI</span></p>
         <h3>Channel sensing</h3>
         <p>A separate ESP32-C6 transmitter and ESP32-S3 receiver capture channel changes for experimental movement and presence features.</p>
+        <button type="button" class="syren-engineering__explore" data-syren-sensor-demo="csi">Explore Wi-Fi CSI <span aria-hidden="true">↗</span></button>
       </article>
     </div>
 

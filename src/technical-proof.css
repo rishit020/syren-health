@@ -30,7 +30,10 @@
 #engineering .syren-engineering__spec { margin: 0 0 15px; color: #f5ad85; font: 500 clamp(29px, 3vw, 38px)/1 Domine, serif; letter-spacing: -.04em; }
 #engineering .syren-engineering__spec span { font: 500 13px/1.4 Inter, sans-serif; letter-spacing: .01em; }
 #engineering .syren-engineering__modalities h3 { margin: 0 0 11px; color: #fff9f0; font: 600 16px/1.2 Inter, sans-serif; }
-#engineering .syren-engineering__modalities article > p:last-child { max-width: 320px; margin: 0; color: #cfc0b5; font: 400 14px/1.5 Inter, sans-serif; }
+#engineering .syren-engineering__modalities article > p:not(.syren-engineering__spec) { max-width: 320px; margin: 0; color: #cfc0b5; font: 400 14px/1.5 Inter, sans-serif; }
+#engineering .syren-engineering__explore { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin-top: 14px; padding: 0; border: 0; background: transparent; color: #f5ad85; font: 600 12px/1.3 Inter, sans-serif; cursor: pointer; text-align: left; }
+#engineering .syren-engineering__explore:hover { color: #fff5eb; }
+#engineering .syren-engineering__explore:focus-visible { outline: 2px solid #f5ad85; outline-offset: 3px; }
 
 #engineering .syren-engineering__topology { display: grid; grid-template-columns: 1.3fr .7fr; gap: 16px; margin-top: 16px; }
 #engineering .syren-engineering__topology-card { min-width: 0; padding: 25px 27px 24px; border: 1px solid #665448; border-radius: 14px; background: #2d261f; }

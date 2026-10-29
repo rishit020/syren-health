@@ -81,7 +81,7 @@ try {
 
     assert.equal(await section.locator("article").count(), 3, `${name}: card count`);
     assert.equal(await section.locator('a[href="/contact"]').count(), 2, `${name}: contact-link count`);
-    assert.equal(await section.locator("button").count(), 0, `${name}: noninteractive labels rendered as buttons`);
+    assert.equal(await section.locator('button[data-syren-sensor-demo="radar"]').count(), 1, `${name}: sensor walkthrough button`);
     const statusTags = await section.locator(".syren-progress__status").evaluateAll((items) =>
       items.map((item) => ({ tag: item.tagName, role: item.getAttribute("role"), tabIndex: item.tabIndex })),
     );

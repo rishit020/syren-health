@@ -12,7 +12,7 @@ const steps = [
     number: "2",
     label: "Contactless sensing",
     title: "Radar, thermal and Wi-Fi CSI.",
-    description: "Three sensing streams on the bench.",
+    description: "Explore how the three sensors work.",
     href: "/#features",
   },
   {
@@ -41,7 +41,7 @@ const cardVisuals = [
       <div class="syren-how-visual__bench-node syren-how-visual__bench-node--rx"><small>ESP32-S3</small><strong>CSI receiver</strong></div>
     </div>
     <div class="syren-how-visual__inputs"><span>60 GHz radar</span><span>Thermal array</span><span>CSI samples</span></div>
-    <div class="syren-how-visual__foot"><span>Measured on one bench link</span><span class="syren-how-visual__arrow" aria-hidden="true">↗</span></div>
+    <div class="syren-how-visual__foot"><span>Explore the sensors</span><span class="syren-how-visual__arrow" aria-hidden="true">↗</span></div>
   </div>`,
   `<div class="syren-how-visual syren-how-visual--dashboard" data-syren-how-visual="dashboard">
     <div class="syren-how-visual__top"><span>03 / Caregiver review</span><span class="syren-how-visual__tag">Current UI</span></div>

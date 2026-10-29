@@ -24,8 +24,8 @@ const expected = [
     visual: "sensing",
     href: "/#features",
     title: "Radar, thermal and Wi-Fi CSI.",
-    description: "Three sensing streams on the bench.",
-    visible: ["Bench setup", "60 GHz radar", "32 × 24 thermal", "Wi-Fi CSI", "ESP32-C6", "ESP32-S3", "Measured on one bench link"],
+    description: "Explore how the three sensors work.",
+    visible: ["Bench setup", "60 GHz radar", "32 × 24 thermal", "Wi-Fi CSI", "ESP32-C6", "ESP32-S3", "Explore the sensors"],
   },
   {
     visual: "dashboard",
@@ -130,7 +130,14 @@ try {
     await card.focus();
     await card.press("Enter");
     await page.waitForTimeout(150);
-    if (index === 2) {
+    if (index === 1) {
+      const sensors = page.locator("dialog.syren-sensor");
+      assert.ok(await sensors.isVisible(), "sensing card opens sensor walkthrough from keyboard");
+      await page.keyboard.press("Escape");
+      assert.ok(!(await sensors.isVisible()), "Escape closes sensor walkthrough");
+      assert.ok(await card.evaluate((element) => element === document.activeElement), "focus returns to sensing card");
+      report.keyboard.push({ card: 2, destination: "sensor walkthrough" });
+    } else if (index === 2) {
       const demo = page.locator("dialog.syren-demo");
       assert.ok(await demo.isVisible(), "dashboard card opens interactive dialog from keyboard");
       assert.ok((await demo.innerText()).includes("synthetic data"), "demo discloses synthetic data");

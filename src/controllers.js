@@ -1,5 +1,6 @@
 import { submitContact } from "./contact-delivery.js";
 import { openClinicDemo } from "./clinic-demo.js";
+import { openSensorDemo } from "./sensor-demo.js";
 import revealTiming from "../reference/reveal-timing.json";
 import scrollReveals from "../reference/reveal-selectors.json";
 
@@ -704,6 +705,12 @@ export function installScrollRevealMotion(scope, route, variant) {
 
 export function createInteractionHandlers({ route, templates, navigate }) {
   function onClick(event) {
+    const sensorTrigger = event.target.closest('[data-syren-sensor-demo],a[data-syren-how-step="2"]');
+    if (sensorTrigger && event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
+      event.preventDefault();
+      openSensorDemo(sensorTrigger, sensorTrigger.dataset.syrenSensorDemo || "radar");
+      return;
+    }
     const demoTrigger = event.target.closest('[data-syren-demo-trigger],a[data-syren-how-step="3"]');
     if (demoTrigger && event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
       event.preventDefault();
