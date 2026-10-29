@@ -20,7 +20,7 @@ npm run preview -- --port 4173
 
 ## Current website
 
-- `/`: hero, how it works, progress, approach, features/device, purpose, engineering proof, FAQ and footer.
+- `/`: hero, how it works, approach, features/device, purpose, progress, engineering proof, FAQ and footer.
 - `/contact`: Syren inquiry form that submits directly through FormSubmit to **rishit020@gmail.com**. FormSubmit was activated and an actual website submission was verified in Gmail (it initially landed in Spam). No email app is required.
 - `/404` and unknown paths: branded not-found page.
 

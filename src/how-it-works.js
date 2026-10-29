@@ -6,20 +6,20 @@ const steps = [
     label: "Room awareness",
     title: "Awareness through the night.",
     description: "More context between caregiver check-ins.",
-    href: "/#device",
+    href: "/#approach",
   },
   {
     number: "2",
-    label: "Contactless sensing",
-    title: "Radar, thermal and Wi-Fi CSI.",
-    description: "Explore how the three sensors work.",
+    label: "Designed around care",
+    title: "More context. Less disruption.",
+    description: "Explore the contactless sensing design.",
     href: "/#features",
   },
   {
     number: "3",
     label: "Caregiver review",
-    title: "An actual dashboard UI.",
-    description: "Explore an interactive preview with synthetic records.",
+    title: "A clearer view for care teams.",
+    description: "Explore the clinic dashboard with synthetic records.",
     href: "/#engineering",
   },
 ];
@@ -32,21 +32,20 @@ const cardVisuals = [
     <div class="syren-how-visual__room-copy"><h3>Awareness through the night.</h3><p>More context between caregiver check-ins.</p><span class="syren-how-visual__arrow" aria-hidden="true">↗</span></div>
   </div>`,
   `<div class="syren-how-visual syren-how-visual--sensing" data-syren-how-visual="sensing">
-    <div class="syren-how-visual__top"><span>02 / Contactless sensing</span><span class="syren-how-visual__tag">Bench setup</span></div>
-    <h3>Three sensing streams.<br>One room.</h3>
-    <p class="syren-how-visual__lead">60 GHz radar · 32 × 24 thermal · Wi-Fi CSI</p>
-    <div class="syren-how-visual__bench" aria-label="Separate ESP32-C6 transmitter sends a wireless signal to an ESP32-S3 receiver that captures CSI alongside wired radar and thermal inputs.">
-      <div class="syren-how-visual__bench-node"><small>ESP32-C6</small><strong>TX node</strong></div>
-      <div class="syren-how-visual__rf"><span>Wi-Fi signal</span><i></i></div>
-      <div class="syren-how-visual__bench-node syren-how-visual__bench-node--rx"><small>ESP32-S3</small><strong>CSI receiver</strong></div>
+    <div class="syren-how-visual__top"><span>02 / Designed around care</span><span class="syren-how-visual__tag">In development</span></div>
+    <h3>More context.<br>Less disruption.</h3>
+    <p class="syren-how-visual__lead">Designed to fit into the rhythms of care.</p>
+    <div class="syren-how-visual__capabilities">
+      <div><span aria-hidden="true">✦</span><div><strong>Contactless by design</strong><small>No wearable to remember</small></div></div>
+      <div><span aria-hidden="true">◷</span><div><strong>Overnight context</strong><small>Explore activity between check-ins</small></div></div>
+      <div><span aria-hidden="true">↗</span><div><strong>Caregiver review</strong><small>People make the decisions</small></div></div>
     </div>
-    <div class="syren-how-visual__inputs"><span>60 GHz radar</span><span>Thermal array</span><span>CSI samples</span></div>
-    <div class="syren-how-visual__foot"><span>Explore the sensors</span><span class="syren-how-visual__arrow" aria-hidden="true">↗</span></div>
+    <div class="syren-how-visual__foot"><span>See how sensing works</span><span class="syren-how-visual__arrow" aria-hidden="true">↗</span></div>
   </div>`,
   `<div class="syren-how-visual syren-how-visual--dashboard" data-syren-how-visual="dashboard">
     <div class="syren-how-visual__top"><span>03 / Caregiver review</span><span class="syren-how-visual__tag">Current UI</span></div>
-    <h3>A real clinic<br>dashboard.</h3>
-    <p class="syren-how-visual__lead">Care-team overview, attention queue and monitoring status.</p>
+    <h3>A clearer view<br>for care teams.</h3>
+    <p class="syren-how-visual__lead">A sample overview for caregiver review.</p>
     <div class="syren-how-visual__screen"><div class="syren-how-visual__screen-bar"><span></span><span></span><span></span><strong>Clinic overview · Demo</strong></div><img src="/syren/clinic-overview-card.png" width="900" height="1200" alt="Actual Syren clinic overview interface with synthetic resident records, an attention queue and monitoring coverage." loading="lazy" decoding="async" /></div>
     <div class="syren-how-visual__foot"><span>Explore demo · synthetic data</span><span class="syren-how-visual__arrow" aria-hidden="true">↗</span></div>
   </div>`,
@@ -81,7 +80,7 @@ export function applyHowItWorks(root) {
   );
   setText(
     supportingCopy,
-    "An illustrated room concept, a measured sensing bench and the current clinic interface.",
+    "Designed around comfort, overnight awareness and caregiver review. Syren is in development.",
   );
 
   const cards = [

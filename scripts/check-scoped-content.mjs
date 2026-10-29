@@ -17,7 +17,7 @@ try {
   const unchanged=[];
   assert.match(await p.locator('#faq').innerText(),/What is Syren Health building/);
   assert.match(await p.locator('footer').innerText(),/Syren Health/);
-  const hero=p.locator('section[data-syren-home]');const text=await hero.innerText();for(const title of['Contactless sensing','Radar · thermal · Wi-Fi CSI','Caregiver awareness'])assert.ok(text.includes(title));assert.doesNotMatch(text,/500 Members|15 Years|98%|biomarker|longevity/i);
+  const hero=p.locator('section[data-syren-home]');const text=await hero.innerText();for(const title of['Contactless sensing','No wearable needed','Caregiver awareness'])assert.ok(text.includes(title));assert.doesNotMatch(text,/500 Members|15 Years|98%|biomarker|longevity|ESP32|Wi-Fi CSI/i);
   const showcase=hero.locator('.syren-hero-showcase');assert.ok(await showcase.isVisible());
   assert.match(await showcase.innerText(),/synthetic records/i);
   assert.ok(await showcase.locator('img').evaluate(img=>img.complete&&img.naturalWidth>0));

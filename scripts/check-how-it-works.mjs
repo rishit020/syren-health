@@ -10,11 +10,12 @@ const viewports = {
   laptop1280: { width: 1280, height: 800 },
   tablet768: { width: 768, height: 1024 },
   mobile390: { width: 390, height: 844 },
+  mobile320: { width: 320, height: 800 },
 };
 const expected = [
   {
     visual: "room",
-    href: "/#device",
+    href: "/#approach",
     title: "Awareness through the night.",
     description: "More context between caregiver check-ins.",
     visible: ["Placement concept", "Awareness through the night."],
@@ -23,16 +24,16 @@ const expected = [
   {
     visual: "sensing",
     href: "/#features",
-    title: "Radar, thermal and Wi-Fi CSI.",
-    description: "Explore how the three sensors work.",
-    visible: ["Bench setup", "60 GHz radar", "32 × 24 thermal", "Wi-Fi CSI", "ESP32-C6", "ESP32-S3", "Explore the sensors"],
+    title: "More context. Less disruption.",
+    description: "Explore the contactless sensing design.",
+    visible: ["In development", "Contactless by design", "Overnight context", "Caregiver review", "See how sensing works"],
   },
   {
     visual: "dashboard",
     href: "/#engineering",
-    title: "An actual dashboard UI.",
-    description: "Explore an interactive preview with synthetic records.",
-    visible: ["Current UI", "A real clinic", "Explore demo · synthetic data"],
+    title: "A clearer view for care teams.",
+    description: "Explore the clinic dashboard with synthetic records.",
+    visible: ["Current UI", "A clearer view", "Explore demo · synthetic data"],
     image: "/syren/clinic-overview-card.png",
   },
 ];
@@ -70,6 +71,7 @@ try {
           description: element.querySelector(".framer-m5clq p")?.textContent,
           visual: panel.dataset.syrenHowVisual,
           visible: panel.innerText,
+          fitsVertically: panel.scrollHeight <= panel.clientHeight + 1,
           image: image ? { src: image.getAttribute("src"), loaded: image.complete && image.naturalWidth > 0, alt: image.alt } : null,
           ratio: rect.height / rect.width,
           captionHidden: element.querySelector(".framer-p5qlki").getBoundingClientRect().width <= 1,
@@ -83,6 +85,10 @@ try {
       assert.equal(details.description, target.description, `${name}: description`);
       assert.equal(details.visual, target.visual, `${name}: card visual`);
       target.visible.forEach((value) => assert.ok(details.visible.includes(value), `${name}: missing visible ${value}`));
+      if (target.visual === "sensing") {
+        assert.ok(details.fitsVertically, `${name}: capability card clips its content`);
+        assert.doesNotMatch(details.visible, /ESP32|60 GHz|32 × 24|Wi-Fi CSI/i, `${name}: technical specifications should appear later`);
+      }
       if (target.image) {
         assert.equal(details.image?.src, target.image, `${name}: image source`);
         assert.ok(details.image.loaded && details.image.alt, `${name}: image load and alt text`);

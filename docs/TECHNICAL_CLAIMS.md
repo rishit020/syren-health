@@ -12,7 +12,7 @@ Checked October 24, 2026 against `aksharkakkad-web/MedicalHardware`, branch `har
 
 `public/syren/clinic-overview-wide.png` and `clinic-overview-card.png` were captured on October 24, 2026 from the clinic app running locally at `http://127.0.0.1:3100/`. The visible “Demo environment / Synthetic records only” label comes from the app. The overview showed six fictional records. No PHI was used. The wide capture uses a 1440 × 1050 viewport; the card capture clips the same app at 900 × 1200 for the existing portrait card.
 
-The homepage room card uses the existing `approach-room-v1.webp` illustration. It is visibly labeled as a placement concept. The sensing card is a native diagram derived from the bench topology above, not a photograph or a multi-room network diagram.
+The homepage room card uses the existing `approach-room-v1.webp` illustration. It is visibly labeled as a placement concept. The capability card describes design goals and can open an illustrative sensor walkthrough; the detailed bench diagram appears in the technical material below.
 
 The homepage purpose cards show hardware specifications and the intended human review workflow. They contain no customer rating, outcome percentage, or clinical performance claim. The remaining generated room scene is visibly labeled as illustrative; the dashboard images are labeled as synthetic software captures.
 

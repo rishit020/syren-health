@@ -13,8 +13,8 @@ const heroCopy = new Map([
   ["Stop managing symptoms and start engineering your vitality. Luvia integrates deep biomarker analysis with real-time AI insights.", "Syren Health is developing contactless room monitoring to help care teams notice overnight activity that may need a closer look."],
   ["+500 Members", "Contactless sensing"],
   ["Helping high-performers", "Room-based monitoring"],
-  ["+15 Years of longevity", "Radar · thermal · Wi-Fi CSI"],
-  ["Focused on extending healthspan", "Designed for resident comfort"],
+  ["+15 Years of longevity", "No wearable needed"],
+  ["Focused on extending healthspan", "A design goal for resident comfort"],
   ["98% Sleep improvement", "Caregiver awareness"],
   ["Proven results in recovery", "In development for senior care"],
 ]);
@@ -74,7 +74,6 @@ const approachCopy = new Map([
 
 const icons = {
   sensing: '<circle cx="12" cy="12" r="2"/><path d="M7.1 7.1a7 7 0 0 0 0 9.8m9.8-9.8a7 7 0 0 1 0 9.8M3.6 3.6a12 12 0 0 0 0 16.8m16.8-16.8a12 12 0 0 1 0 16.8"/>',
-  signal: '<path d="M3 14c3-5 5 5 9 0s6-5 9 0M3 8c3-5 5 5 9 0s6-5 9 0M3 20c3-5 5 5 9 0s6-5 9 0"/>',
   wearable: '<path d="m10 3 1-2h4l2 5m-7 15 1 2h4l2-5M3 3l18 18"/><rect x="6" y="6" width="12" height="12" rx="3"/><path d="M12 8v4l2 2"/>',
   care: '<circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3m2-16a3 3 0 0 1 0 6m1 4a5 5 0 0 1 3 4v2"/>',
   night: '<path d="M21 13a9 9 0 1 1-10-10 7 7 0 0 0 10 10Z"/><path d="M18 2v4m-2-2h4"/>',
@@ -189,17 +188,17 @@ export function applyScopedHomeContent(root) {
   addHeroShowcase(root, hero);
   hero.querySelectorAll("a[href]").forEach((anchor) => {
     const original = anchor.querySelector("p")?.textContent.trim();
-    const label = original === "Request Access" ? "Explore the Device" : original === "Book a Demo" ? "Get in Touch" : null;
+    const label = original === "Request Access" ? "See how it works" : original === "Book a Demo" ? "Get in Touch" : null;
     if (!label) return;
     anchor.querySelectorAll("p").forEach((p) => { p.textContent = label; });
-    anchor.setAttribute("href", original === "Request Access" ? "/#device" : "/contact");
+    anchor.setAttribute("href", original === "Request Access" ? "/#how-it-works" : "/contact");
     anchor.removeAttribute("target");
   });
   const stats = hero.querySelector('[data-framer-name="Hero stats"]');
   stats?.querySelectorAll('[data-framer-name="Icon"] svg').forEach((svg) => {
     const card = svg.closest('[data-framer-name="Desktop"],[data-framer-name="Mobile"],[data-framer-name="Tablet"]') || svg.parentElement.parentElement;
     const text = card.textContent;
-    replaceIcon(svg, text.includes("Contactless sensing") ? "sensing" : text.includes("Radar") ? "signal" : text.includes("No wearable needed") ? "wearable" : "care");
+    replaceIcon(svg, text.includes("Contactless sensing") ? "sensing" : text.includes("No wearable needed") ? "wearable" : "care");
   });
 
   const impact = root.querySelector('section[data-framer-name="Impact Section"]');
@@ -261,5 +260,6 @@ export function applyScopedHomeContent(root) {
   // prototype specifications together near the end of the page.
   const faq = root.querySelector("#faq");
   const engineering = root.querySelector("#engineering");
-  if (faq && impact && engineering) faq.before(features, impact, engineering);
+  const progress = root.querySelector('#testimonials[data-syren-progress="true"]');
+  if (faq && impact && engineering && progress) faq.before(features, impact, progress, engineering);
 }
