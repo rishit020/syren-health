@@ -1,0 +1,110 @@
+/* A shared editorial layer for the public site. The captured responsive
+   structure and interactions remain the source for navigation and content. */
+[data-syren-home] h1.framer-text,
+#features h2.framer-text,
+section[data-framer-name="Impact Section"] h2.framer-text,
+#how-it-works h2.framer-text,
+#approach h2.framer-text,
+#faq h2.framer-text {
+  font-family: Inter, sans-serif !important;
+  font-weight: 650 !important;
+  letter-spacing: -0.055em !important;
+  line-height: 1.06 !important;
+}
+
+[data-syren-home] h1.framer-text { font-size: clamp(54px, 5.7vw, 82px) !important; }
+[data-syren-home] h1 strong { font-family: Inter, sans-serif !important; font-weight: inherit !important; }
+[data-syren-home] [data-framer-name="Heading"] { width: min(57%, 650px) !important; }
+[data-syren-home] [data-framer-name="Heading"] > [data-framer-name="Content"] { max-width: 620px; }
+[data-syren-home] [data-framer-name="Heading"] p { max-width: 530px; line-height: 1.55 !important; }
+[data-syren-home] [data-framer-name="Wrapper"] { position: relative; }
+
+.syren-hero-showcase {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  display: block;
+  width: min(40%, 485px);
+  padding: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(109, 80, 56, 0.2);
+  border-radius: 22px;
+  background: rgba(255, 251, 244, 0.9);
+  box-shadow: 0 28px 70px rgba(68, 42, 24, 0.13), 0 2px 8px rgba(68, 42, 24, 0.05);
+  color: #29241e;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 240ms ease, box-shadow 240ms ease;
+  backdrop-filter: blur(18px);
+}
+.syren-hero-showcase * { box-sizing: border-box; }
+.syren-hero-showcase:focus-visible { outline: 3px solid #9b452b; outline-offset: 5px; }
+.syren-hero-showcase__heading { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 2px 2px 15px; font: 650 14px/1.2 Inter, sans-serif; }
+.syren-hero-showcase__heading span:last-child { color: #8a6954; font: 600 10px/1.2 Inter, sans-serif; letter-spacing: .09em; text-transform: uppercase; }
+.syren-hero-showcase__window { overflow: hidden; border: 1px solid #dedbd6; border-radius: 10px; background: #fff; box-shadow: 0 12px 28px rgba(48, 35, 25, .08); }
+.syren-hero-showcase__bar { display: flex; height: 30px; align-items: center; gap: 4px; padding: 0 10px; border-bottom: 1px solid #e9e9e9; background: #fafafa; }
+.syren-hero-showcase__bar i { width: 6px; height: 6px; border-radius: 50%; background: #d2d2d2; }
+.syren-hero-showcase__bar span { margin-left: 8px; color: #737373; font: 500 10px/1 Inter, sans-serif; }
+.syren-hero-showcase__window img { display: block; width: 100%; height: auto; max-height: 260px; object-fit: cover; object-position: top; }
+.syren-hero-showcase__bottom { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 16px; color: #9f492d; font: 650 13px/1.3 Inter, sans-serif; }
+.syren-hero-showcase__bottom span:last-child { display: grid; width: 30px; height: 30px; place-items: center; border: 1px solid #cfa890; border-radius: 50%; font-size: 17px; }
+.syren-hero-showcase > p { margin: 8px 0 0; color: #75685e; font: 400 11px/1.45 Inter, sans-serif; }
+@media (hover: hover) and (pointer: fine) {
+  .syren-hero-showcase:hover { transform: translateY(-4px); box-shadow: 0 34px 80px rgba(68, 42, 24, .18); }
+}
+
+/* Quiet surfaces and generous corners give the technical material room to breathe. */
+#features [data-framer-name="Features"] > [data-framer-name="Left"] [data-framer-name="Desktop"],
+#features [data-framer-name="Features"] > [data-framer-name="Right"] [data-framer-name="Desktop"],
+#features [data-framer-name="Features"] [data-framer-name="Mobile"],
+#features [data-framer-name="Features"] [data-framer-name="Tablet"] {
+  background: #f2ede3 !important;
+  border: 1px solid rgba(114, 88, 64, .09);
+  border-radius: 20px !important;
+}
+#features .syren-feature-bench { border-radius: 20px; }
+@media (min-width: 1000px) {
+  #features [data-framer-name="Center image"] { flex: 1.3 0 0px !important; }
+}
+#how-it-works [data-syren-how-card="true"] { border-radius: 22px; }
+#how-it-works .syren-how-visual--sensing,
+#how-it-works .syren-how-visual--dashboard { background-color: #f4efe6; }
+#engineering.syren-engineering { background: radial-gradient(circle at 85% 4%, #3a302a 0, transparent 30%), #211d1a; }
+#engineering .syren-engineering__lead h2,
+#testimonials .syren-progress__header h2 { font-family: Inter, sans-serif; font-weight: 650; letter-spacing: -.055em; }
+#engineering .syren-engineering__modalities { gap: 12px; overflow: visible; border: 0; background: transparent; }
+#engineering .syren-engineering__modalities article { border: 1px solid #574a42; border-radius: 18px; background: #2c2622; }
+#engineering .syren-engineering__topology-card { border-radius: 18px; }
+#engineering button.syren-engineering__screen { transition: transform 220ms ease, box-shadow 220ms ease; }
+@media (hover: hover) and (pointer: fine) {
+  #engineering button.syren-engineering__screen:hover { transform: translateY(-3px); box-shadow: 0 30px 80px #120e0a77; }
+}
+#testimonials .syren-progress__card { border-radius: 20px; background: #fffdf9; }
+#testimonials .syren-progress__visual { border-radius: 13px; }
+#approach [data-framer-name="Mission"] { border-radius: 20px !important; }
+#approach [data-syren-room-frame] { border-radius: 20px !important; }
+#faq [data-syren-faq-index] { transition: background-color 180ms ease; }
+#faq [data-syren-faq-index]:hover { background-color: #f5eee3 !important; }
+
+@media (min-width: 810px) and (max-width: 1199px) {
+  [data-syren-home], [data-syren-home] > [data-framer-name="Container"] { height: auto !important; }
+  [data-syren-home] [data-framer-name="Wrapper"] { min-height: 575px !important; justify-content: space-between !important; }
+}
+
+@media (max-width: 809px) {
+  [data-syren-home] { height: auto !important; min-height: 0 !important; }
+  [data-syren-home] > [data-framer-name="Container"] { height: auto !important; min-height: 0 !important; padding: 120px 16px 40px !important; background: #f3ecdf; border-radius: 16px; }
+  [data-syren-home] [data-framer-name="Wrapper"] { height: auto !important; gap: 32px !important; }
+  [data-syren-home] [data-framer-name="Heading"] { width: 100% !important; gap: 28px !important; }
+  [data-syren-home] h1.framer-text { font-size: clamp(43px, 8vw, 64px) !important; }
+  .syren-hero-showcase { position: relative; top: auto; right: auto; width: 100%; max-width: 520px; padding: 14px; }
+  .syren-hero-showcase__window img { max-height: 250px; }
+  [data-syren-home] [data-framer-name="Hero stats"] { height: auto !important; gap: 15px !important; }
+  [data-syren-home] [data-framer-name="Hero stats"] [data-framer-name="Tablet/Mobile"] { flex-direction: row !important; align-items: center !important; justify-content: flex-start !important; gap: 12px !important; }
+  [data-syren-home] [data-framer-name="Hero stats"] [data-framer-name="Content"] { width: auto !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .syren-hero-showcase, #engineering button.syren-engineering__screen { transition: none; }
+  .syren-hero-showcase:hover, #engineering button.syren-engineering__screen:hover { transform: none; }
+}

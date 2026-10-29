@@ -3,6 +3,7 @@ import { applyProgressSection } from "./progress-section.js";
 import { applySiteChrome } from "./site-chrome.js";
 import { applyTechnicalProof } from "./technical-proof.js";
 import "./home-visuals.css";
+import "./visual-refresh.css";
 
 // Content-only adaptation. Keep the captured component tree, CSS and motion.
 export const homeTitle = "Syren Health | Contactless Overnight Awareness";
@@ -73,6 +74,7 @@ const approachCopy = new Map([
 
 const icons = {
   sensing: '<circle cx="12" cy="12" r="2"/><path d="M7.1 7.1a7 7 0 0 0 0 9.8m9.8-9.8a7 7 0 0 1 0 9.8M3.6 3.6a12 12 0 0 0 0 16.8m16.8-16.8a12 12 0 0 1 0 16.8"/>',
+  signal: '<path d="M3 14c3-5 5 5 9 0s6-5 9 0M3 8c3-5 5 5 9 0s6-5 9 0M3 20c3-5 5 5 9 0s6-5 9 0"/>',
   wearable: '<path d="m10 3 1-2h4l2 5m-7 15 1 2h4l2-5M3 3l18 18"/><rect x="6" y="6" width="12" height="12" rx="3"/><path d="M12 8v4l2 2"/>',
   care: '<circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3m2-16a3 3 0 0 1 0 6m1 4a5 5 0 0 1 3 4v2"/>',
   night: '<path d="M21 13a9 9 0 1 1-10-10 7 7 0 0 0 10 10Z"/><path d="M18 2v4m-2-2h4"/>',
@@ -97,6 +99,26 @@ const benchVisual = `
     <div class="syren-feature-bench__footer"><span>USB → local dashboard</span><small>Engineering data</small></div>
   </div>
 `;
+
+const heroShowcase = `
+  <button type="button" class="syren-hero-showcase" data-syren-demo-trigger aria-label="Explore the interactive clinic dashboard preview with synthetic data">
+    <div class="syren-hero-showcase__heading"><span>Care, in context</span><span>Interface preview</span></div>
+    <div class="syren-hero-showcase__window">
+      <div class="syren-hero-showcase__bar"><i></i><i></i><i></i><span>Clinic overview · Synthetic data</span></div>
+      <img src="/syren/clinic-overview-wide.png" width="1440" height="1050" alt="Current clinic dashboard interface with synthetic resident records" />
+    </div>
+    <div class="syren-hero-showcase__bottom"><span>Explore the dashboard demo</span><span aria-hidden="true">↗</span></div>
+    <p>Clinic interface uses synthetic records. Hardware integration is in development.</p>
+  </button>
+`;
+
+function addHeroShowcase(root, hero) {
+  const stats = hero.querySelector('[data-framer-name="Hero stats"]');
+  if (!stats || hero.querySelector(".syren-hero-showcase")) return;
+  const template = root.createElement("template");
+  template.innerHTML = heroShowcase.trim();
+  stats.before(template.content.cloneNode(true));
+}
 
 function renderBenchVisual(root, picture) {
   if (!picture || picture.dataset.syrenBenchVisual) return;
@@ -164,6 +186,7 @@ export function applyScopedHomeContent(root) {
   hero.dataset.syrenHome = "true";
   hero.id = "top";
   replaceCopy(hero, heroCopy);
+  addHeroShowcase(root, hero);
   hero.querySelectorAll("a[href]").forEach((anchor) => {
     const original = anchor.querySelector("p")?.textContent.trim();
     const label = original === "Request Access" ? "Explore the Device" : original === "Book a Demo" ? "Get in Touch" : null;
@@ -176,7 +199,7 @@ export function applyScopedHomeContent(root) {
   stats?.querySelectorAll('[data-framer-name="Icon"] svg').forEach((svg) => {
     const card = svg.closest('[data-framer-name="Desktop"],[data-framer-name="Mobile"],[data-framer-name="Tablet"]') || svg.parentElement.parentElement;
     const text = card.textContent;
-    replaceIcon(svg, text.includes("Contactless sensing") ? "sensing" : text.includes("No wearable needed") ? "wearable" : "care");
+    replaceIcon(svg, text.includes("Contactless sensing") ? "sensing" : text.includes("Radar") ? "signal" : text.includes("No wearable needed") ? "wearable" : "care");
   });
 
   const impact = root.querySelector('section[data-framer-name="Impact Section"]');

@@ -1,6 +1,6 @@
 # Syren Health
 
-The Syren Health website, live at https://syrenhealth.com and locally runnable, built with React and Vite, preserving the Luvia template’s cream/terracotta design, typography and original hero motion.
+The Syren Health website, live at https://syrenhealth.com and locally runnable, built with React and Vite. Its visual design uses a cream and terracotta palette, refreshed typography and the original hero motion.
 
 ## Run
 
@@ -44,7 +44,7 @@ Older scripts and comparison reports document the original Luvia reconstruction 
 
 ## Implementation and assets
 
-`src/App.jsx` supplies routing and responsive template selection. `src/home-content.js` adapts the homepage; `src/home-visuals.css` styles its native bench diagram and visual labels; `src/site-chrome.js` owns shared navigation, FAQ and footer; `src/contact-content.js` adapts the contact form. `src/controllers.js` handles interactions and motion. Native progress visuals are in `src/progress-section.*`; the engineering section is in `src/technical-proof.*`; photographic and dashboard cards are in `src/how-it-works.*`.
+`src/App.jsx` supplies routing and responsive template selection. `src/home-content.js` adapts the homepage; `src/home-visuals.css` styles its native bench diagram and visual labels; `src/visual-refresh.css` supplies the shared homepage visual treatment and hero dashboard preview. `src/site-chrome.js` owns shared navigation, FAQ and footer; `src/contact-content.js` adapts the contact form. `src/controllers.js` handles interactions and motion. Native progress visuals are in `src/progress-section.*`; the engineering section is in `src/technical-proof.*`; photographic and dashboard cards are in `src/how-it-works.*`.
 
 All media and fonts are served locally. The room photograph is an illustrative concept with an on-image label. The device feature uses a native diagram of the current single-room bench topology. The two `clinic-overview-*.png` assets are captures of the actual clinic dashboard UI running on its synthetic mock client, not photographs, live patient data or proof of integrated hardware. The product is described as a prototype; there are no customer testimonials or validated performance statistics. See `docs/TECHNICAL_CLAIMS.md` for source and status of public technical claims.
 

@@ -153,7 +153,7 @@ try {
 
   const engineering = await browser.newPage({ viewport: viewports.desktop1440 });
   await engineering.goto(`${base}/#engineering`);
-  await engineering.locator("[data-syren-demo-trigger]").click();
+  await engineering.locator("#engineering [data-syren-demo-trigger]").click();
   assert.ok(await engineering.locator("dialog.syren-demo").isVisible(), "engineering screenshot opens demo");
   await engineering.locator("dialog.syren-demo").screenshot({ path: `${output}/desktop-demo.png`, animations: "disabled" });
   await engineering.close();
